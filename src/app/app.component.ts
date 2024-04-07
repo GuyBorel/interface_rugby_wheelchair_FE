@@ -9,16 +9,19 @@ import {NgIf} from "@angular/common";
 import {ModeCartographieComponent} from "./mode-cartographie/mode-cartographie.component";
 import {BoutonStopComponent} from "./bouton-stop/bouton-stop.component";
 import {ModeCommandeVocaleComponent} from "./mode-commande-vocale/mode-commande-vocale.component";
+import { HttpClientModule } from '@angular/common/http';
+import {AudioService} from "./audio.service";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenuComponent, TitreComponent, ModePilotageManuelComponent, ModeSuiveurDeBalleComponent, NgIf, ModeCartographieComponent, BoutonStopComponent, ModeCommandeVocaleComponent],
+  imports: [RouterOutlet, MenuComponent, TitreComponent, ModePilotageManuelComponent, ModeSuiveurDeBalleComponent, NgIf, ModeCartographieComponent, BoutonStopComponent, ModeCommandeVocaleComponent,
+    HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'interface_robot_exploreur';
-  constructor(public menuService: MenuService) {
+  constructor(public menuService: MenuService,audioService : AudioService,) {
   }
 }

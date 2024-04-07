@@ -2,8 +2,16 @@
   <button class="btn-success" (click)="toggleRecording()">
     {{ recording ? 'Arrêter l\'enregistrement' : 'Démarrer l\'enregistrement' }}
   </button>
+
   <button class="btn-warning" (click)="downloadRecording()" [disabled]="!audioUrl">Télécharger</button>
-  <audio *ngIf="audioUrl" controls>
+  <audio *ngIf="audioUrl && !recording" controls>
     <source [src]="audioUrl" type="audio/wav">
   </audio>
+
+  <button class="btn-dark" (click)="transcribeAudio()" [disabled]="!UploadedFile">Convertir en texte</button>
+  <div *ngIf="transcriptionResult">
+    <p>Résultat de la transcription :</p>
+    <p>{{ transcriptionResult }}</p>
+  </div>
+
 </div>
