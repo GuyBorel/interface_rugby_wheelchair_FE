@@ -1,0 +1,14 @@
+<div class="">
+
+
+  <span class="d-flex text-decoration-none align-items-center"><span class="fs-4 d-none d-sm-inline" style="color: dodgerblue;">{{ title }}</span></span>
+  <ul class="nav nav-pills flex-column mt-4">
+    <li class="nav-item" *ngFor="let mode of modes; let i = index">
+      <a class="nav-link" (click)="setMode(i)" [class.active]="mode.active">
+        <span class="fs-5 d-none d-sm-inline">{{ mode.label }}</span>
+      </a>
+
+    </li>
+  </ul>
+</div>
+

@@ -1,0 +1,9 @@
+<div>
+  <button (click)="toggleRecording()">
+    {{ recording ? 'Arrêter l\'enregistrement' : 'Démarrer l\'enregistrement' }}
+  </button>
+  <button (click)="downloadRecording()" [disabled]="!audioUrl">Télécharger</button>
+  <audio *ngIf="audioUrl" controls>
+    <source [src]="audioUrl" type="audio/wav">
+  </audio>
+</div>
