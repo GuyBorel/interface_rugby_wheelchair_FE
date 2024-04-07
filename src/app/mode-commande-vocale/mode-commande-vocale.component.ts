@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import RecordRTC from 'recordrtc';
 import {NgIf} from "@angular/common";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-mode-commande-vocale',
@@ -17,6 +18,7 @@ export class ModeCommandeVocaleComponent {
   audioUrl: string = '';
 
   constructor() { }
+
 
   toggleRecording() {
     if (this.recording) {
