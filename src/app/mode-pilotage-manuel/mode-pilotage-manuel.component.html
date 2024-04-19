@@ -1,8 +1,10 @@
-<div class="fl"><div>
-  <video width="720" height="380" controls>
-    <source src={{videoPath}} type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+<div class="fl">
+  <div>
+    <video width="720" height="380" controls autoplay>
+      <source [src]="videoPath" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 </div>
   <h2>Direction : {{getDirection()}}</h2>
   <div>

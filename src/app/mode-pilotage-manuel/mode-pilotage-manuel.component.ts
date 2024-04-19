@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {MenuService} from "../menu.service";
 import {VideoRobotViewService} from "../video-robot-view.service";
 import {RobotControlService} from "../robot-control.service";
 
@@ -12,7 +11,7 @@ import {RobotControlService} from "../robot-control.service";
 })
 export class ModePilotageManuelComponent {
 
-  videoPath ;
+  videoPath:string;
   private direction: string;
   constructor(serviceVideoRobotView:VideoRobotViewService, serviceRobotControl : RobotControlService) {
     this.videoPath = serviceVideoRobotView.getVideoPath();

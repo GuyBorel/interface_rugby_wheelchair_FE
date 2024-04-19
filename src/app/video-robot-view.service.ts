@@ -7,8 +7,11 @@ export class VideoRobotViewService {
 
   constructor() { }
 
-  getVideoPath(){
-    return "assets/video/Placeholder video.mp4";
+
+  private videoUrl = 'http://192.168.1.41:8080/video_feed';
+
+  getVideoPath(): string {
+    return this.videoUrl;
   }
 
   getBallPosition():number[]{
