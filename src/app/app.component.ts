@@ -21,7 +21,7 @@ import {AudioService} from "./audio.service";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title:string = 'interface_robot_exploreur';
+  title: string = 'interface_robot_exploreur';
 
   constructor(public menuService: MenuService, audioService: AudioService,) {
   }
