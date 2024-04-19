@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {VideoRobotViewService} from "../video-robot-view.service";
 
 @Component({
@@ -9,10 +9,11 @@ import {VideoRobotViewService} from "../video-robot-view.service";
   styleUrl: './mode-suiveur-de-balle.component.css'
 })
 export class ModeSuiveurDeBalleComponent {
-  videoPath ;
-  ballPosition : number[];
-  ballDistance : number;
-  constructor(service:VideoRobotViewService) {
+  videoPath;
+  ballPosition: number[];
+  ballDistance: number;
+
+  constructor(service: VideoRobotViewService) {
     this.videoPath = service.getVideoPath();
     this.ballPosition = service.getBallPosition();
     this.ballDistance = service.getBallDistance();

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +10,16 @@ export class RobotControlService {
     this.direction = "Arret";
   }
 
-  getDirection(){
+  getDirection() {
     return "Avance";
   }
-  setDirection(direction : string){
+
+  setDirection(direction: string) {
     this.direction = direction;
   }
 
   envoyerCommande() {
-
+    // TODO Implémenter la logique pour envoyer une commande
   }
 
   envoyerAudio(audioBlob: Blob) {

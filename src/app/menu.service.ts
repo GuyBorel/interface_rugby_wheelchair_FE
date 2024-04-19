@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
   private modes = [
-    { label: 'Pilotage manuel', active: true },
-    { label: 'Suiveur de balle', active: false },
-    { label: 'Commande vocale', active: false },
-    { label: 'Cartographie', active: false }
+    {label: 'Pilotage manuel', active: true},
+    {label: 'Suiveur de balle', active: false},
+    {label: 'Commande vocale', active: false},
+    {label: 'Cartographie', active: false}
   ];
 
   // BehaviorSubject pour maintenir et émettre l'état actif des modes
   private modesSubject = new BehaviorSubject(this.modes);
   modes$ = this.modesSubject.asObservable();
 
-  constructor() { }
-
+  constructor() {
+  }
 
 
   setModeActive(i: number) {

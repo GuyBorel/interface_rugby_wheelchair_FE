@@ -1,6 +1,6 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { MenuService } from "../menu.service";
+import {Component, OnDestroy} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {MenuService} from "../menu.service";
 import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
@@ -12,7 +12,7 @@ import {NgForOf, NgIf} from "@angular/common";
 })
 export class MenuComponent implements OnDestroy {
   title = 'Menu de sélection du mode';
-  modes: { label: string; active: boolean; }[]=[];
+  modes: { label: string; active: boolean; }[] = [];
   private modesSubscription: Subscription;
 
   constructor(private menuService: MenuService) {
