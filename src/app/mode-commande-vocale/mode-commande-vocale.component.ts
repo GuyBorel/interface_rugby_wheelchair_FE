@@ -66,13 +66,15 @@ export class ModeCommandeVocaleComponent {
   async startRecording() {
     try {
       this.mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      console.log('Accès au microphone réussi', this.mediaStream);
       this.recordRTC = new RecordRTC(this.mediaStream, { type: 'audio' });
       this.recordRTC.startRecording();
       this.recording = true;
     } catch (error) {
-      console.error(error);
+      console.error('Accès au microphone refusé ou périphérique non trouvé', error);
     }
   }
+
 
 
   uploadAudio(file: File | null) {
@@ -82,6 +84,8 @@ export class ModeCommandeVocaleComponent {
     }
     this.audioService.uploadAudio(file);
   }
+
+
   public get UploadedFile(): File | null {
     return this.uploadedFile;
   }
