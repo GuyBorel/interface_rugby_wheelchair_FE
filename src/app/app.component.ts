@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {MenuComponent} from "./menu/menu.component";
 import {TitreComponent} from "./titre/titre.component";
 import {MenuService} from "./menu.service";
@@ -9,7 +9,7 @@ import {NgIf} from "@angular/common";
 import {ModeCartographieComponent} from "./mode-cartographie/mode-cartographie.component";
 import {BoutonStopComponent} from "./bouton-stop/bouton-stop.component";
 import {ModeCommandeVocaleComponent} from "./mode-commande-vocale/mode-commande-vocale.component";
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {AudioService} from "./audio.service";
 
 @Component({
@@ -21,7 +21,8 @@ import {AudioService} from "./audio.service";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'interface_robot_exploreur';
-  constructor(public menuService: MenuService,audioService : AudioService,) {
+  title: string = 'interface_robot_exploreur';
+
+  constructor(public menuService: MenuService, audioService: AudioService,) {
   }
 }

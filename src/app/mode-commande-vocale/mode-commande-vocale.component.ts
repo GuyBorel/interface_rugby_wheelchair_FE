@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import RecordRTC from 'recordrtc';
 import {NgIf} from "@angular/common";
-import {HttpClient} from "@angular/common/http";
 import {AudioService} from "../audio.service";
-import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-mode-commande-vocale',
@@ -23,10 +21,11 @@ export class ModeCommandeVocaleComponent {
   public transcriptionResult: string = '';
 
 
+  constructor(private cd: ChangeDetectorRef, private audioService: AudioService) {
+  }
 
-  constructor(private cd: ChangeDetectorRef,private audioService: AudioService) { }
   onFileSelected(event: any) {
-    const file:File = event.target.files[0];
+    const file: File = event.target.files[0];
     if (file) {
       this.audioService.uploadAudio(file).subscribe(response => {
         console.log("Réponse de l'API :", response);
@@ -48,7 +47,7 @@ export class ModeCommandeVocaleComponent {
     if (this.recordRTC) {
       this.recordRTC.stopRecording(() => {
         let audioBlob = this.recordRTC.getBlob();
-        const audioFile = new File([audioBlob], "audio_recording.ogg", { type: "audio/ogg" });
+        const audioFile = new File([audioBlob], "audio_recording.ogg", {type: "audio/ogg"});
         this.audioUrl = URL.createObjectURL(audioFile);
         this.recording = false;
         this.uploadedFile = audioFile;
@@ -59,22 +58,16 @@ export class ModeCommandeVocaleComponent {
   }
 
 
-
-
-
-
   async startRecording() {
     try {
-      this.mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      console.log('Accès au microphone réussi', this.mediaStream);
-      this.recordRTC = new RecordRTC(this.mediaStream, { type: 'audio' });
+      this.mediaStream = await navigator.mediaDevices.getUserMedia({audio: true});
+      this.recordRTC = new RecordRTC(this.mediaStream, {type: 'audio'});
       this.recordRTC.startRecording();
       this.recording = true;
     } catch (error) {
-      console.error('Accès au microphone refusé ou périphérique non trouvé', error);
+      console.error(error);
     }
   }
-
 
 
   uploadAudio(file: File | null) {
@@ -85,10 +78,10 @@ export class ModeCommandeVocaleComponent {
     this.audioService.uploadAudio(file);
   }
 
-
   public get UploadedFile(): File | null {
     return this.uploadedFile;
   }
+
   downloadRecording() {
     if (this.audioUrl) {
       const a = document.createElement('a');

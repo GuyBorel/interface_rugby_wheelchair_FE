@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
 
 interface TranscriptionResponse {
   transcription: string; // Assurez-vous que cela correspond à la clé retournée par votre API Flask
@@ -11,7 +11,8 @@ interface TranscriptionResponse {
   providedIn: 'root'
 })
 export class AudioService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   uploadAudio(file: File) {
     const formData = new FormData();

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MenuService} from "../menu.service";
 
 @Component({
@@ -9,11 +9,12 @@ import {MenuService} from "../menu.service";
   styleUrl: './titre.component.css'
 })
 export class TitreComponent {
-  mode:string;
-  title:string;
-  statutConnexion:string;
-  service : MenuService;
-  constructor(service:MenuService) {
+  mode: string;
+  title: string;
+  statutConnexion: string;
+  service: MenuService;
+
+  constructor(service: MenuService) {
     this.mode = "Mode Selection"
     this.title = "Mode "
     this.service = service;
