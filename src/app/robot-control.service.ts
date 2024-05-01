@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import {Injectable} from '@angular/core';
 export class RobotControlService {
   private direction: string;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.direction = "Arret";
   }
 
@@ -16,6 +17,10 @@ export class RobotControlService {
 
   setDirection(direction: string) {
     this.direction = direction;
+    this.http.post('http://192.168.1.187:31000/set_direction', { direction: this.direction }).subscribe({
+      next: response => console.log('Direction set', response),
+      error: error => console.error('Error setting direction', error)
+    });
   }
 
   envoyerCommande() {

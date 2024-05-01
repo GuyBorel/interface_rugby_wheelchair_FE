@@ -1,13 +1,12 @@
 <div class="fl">
   <div>
-    <video width="720" height="380" controls autoplay>
-      <source [src]="videoPath" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <img [src]="videoPath" alt="Video Feed">
+
   </div>
 </div>
-
-<div>
-  <p>Position de la balle : [{{ ballPosition }}]</p>
-  <p>Distance de la balle : {{ ballDistance }} cm</p>
+<div *ngFor="let ball of balls">
+  <p>Color: {{ ball.color }}</p>
+  <p>Position: X: {{ ball.position[0] }}, Y: {{ ball.position[1]}}</p>
+  <p>Size: {{ ball.area }}</p>
 </div>
+
