@@ -11,7 +11,7 @@ interface TranscriptionResponse {
   providedIn: 'root'
 })
 export class AudioService {
-  private apiUrl:string = 'http://obvault.duckdns.org'
+  private apiUrl:string = 'http://obvault.duckdns.org:31400'
   constructor(private http: HttpClient) {
   }
 
