@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'http://192.168.1.69:5000', options: {} };
+const config: SocketIoConfig = { url: 'http://obvault.duckdns.org:31400', options: {} };
 
 @NgModule({
   imports: [

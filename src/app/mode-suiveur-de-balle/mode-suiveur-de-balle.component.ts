@@ -20,29 +20,40 @@ export class ModeSuiveurDeBalleComponent implements OnInit, OnDestroy {
   selectedColor: string = 'jaune';
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private service: VideoRobotViewService, private http: HttpClient,
+  constructor(private videoRobotViewService: VideoRobotViewService, private http: HttpClient,
               private ngZone: NgZone,private cdr: ChangeDetectorRef) {
-    this.videoPath = service.getVideoPath();
+    this.videoPath = videoRobotViewService.getVideoPath();
 
   }
   getBallData(){
-    return this.service.getBallData()
+    return this.videoRobotViewService.getBallData()
   }
+
   ngOnInit() {
     this.subscriptions.add(
-      this.service.getBallData().subscribe(data => {
-        console.log('Data received:', data);  // Check the structure here
-        this.ngZone.run(() => { // Ensure update is recognized by Angular
-          this.balls = data;
-          this.cdr.detectChanges(); // Manually trigger change detection
-        });
+      this.videoRobotViewService.listen('ball_data').subscribe({
+        next: (data) => {
+          this.ngZone.run(() => {
+            this.balls = this.transformData(data);
+            this.cdr.detectChanges(); // Assure la mise à jour de la vue avec les nouvelles données
+          });
+        },
+        error: (error) => console.error('Erreur lors de la réception des données de balles:', error)
       })
     );
   }
 
   ngOnDestroy() {
-    this.subscriptions.unsubscribe();
+    this.subscriptions.unsubscribe(); // Prévient les fuites de mémoire
   }
-}
 
-
+  private transformData(data: any): any[] {
+    // Analyser et transformer les données au besoin
+    if (typeof data === 'string') {
+      data = JSON.parse(data);
+    }
+    // Assure que les données sont dans le bon format, en particulier pour 'position'
+    return data.map((ball: any) => ({
+      ...ball,
+          }));
+  }}

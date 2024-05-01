@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from "rxjs/operators";
 import {HttpClient} from '@angular/common/http';
+import { io } from 'socket.io-client';
+
 
 export interface BallData {
   area: number;
@@ -14,10 +16,25 @@ export interface BallData {
   providedIn: 'root'
 })
 export class VideoRobotViewService {
-  private apiUrl = 'http://192.168.1.69:5000';
-  constructor(private http: HttpClient) {}
+  private socket: any;
+  private apiUrl = 'http://obvault.duckdns.org:31400';
+  constructor(private http: HttpClient) {
+    this.socket = io(this.apiUrl);
+  }
 
-
+  // Emit data to server
+  emit(event: string, data: any) {
+    this.socket.emit(event, data);
+  }
+  // Listen for events from the server
+  listen(eventName: string): Observable<any> {
+    return new Observable((subscriber) => {
+      this.socket.on(eventName, (data: any) => {
+        console.log('Received data:', data);  // Log received data
+        subscriber.next(data);
+      });
+    });
+  }
 
   getBallData(): Observable<BallData[]> {
     return this.http.get<BallData[]>(`${this.apiUrl}/get_detections`).pipe(
