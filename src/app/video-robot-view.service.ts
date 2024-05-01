@@ -17,7 +17,7 @@ export interface BallData {
 })
 export class VideoRobotViewService {
   private socket: any;
-  private apiUrl = 'http://obvault.duckdns.org:31400';
+  private apiUrl = 'http://192.168.1.69:5000';
   constructor(private http: HttpClient) {
     this.socket = io(this.apiUrl);
   }
