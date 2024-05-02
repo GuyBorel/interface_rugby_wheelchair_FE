@@ -1,8 +1,8 @@
-import {Component, OnInit, OnDestroy, NgZone} from '@angular/core';
-import {BallData, VideoRobotViewService} from "../video-robot-view.service";
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
+import { BallData, VideoRobotViewService } from "../video-robot-view.service";
 import { HttpClient } from '@angular/common/http';
-import {Observable, Subscription} from 'rxjs';
-import {NgForOf} from "@angular/common";
+import { Observable, Subscription } from 'rxjs';
+import { NgForOf } from "@angular/common";
 import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
@@ -16,18 +16,36 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class ModeSuiveurDeBalleComponent implements OnInit, OnDestroy {
   videoPath: string;
-  balls:BallData[] = [];
-  selectedColor: string = 'jaune';
+  balls: BallData[] = [];
+  colorOptions = ['bleu', 'orange', 'jaune'];
+  selectedColors: string[] = [];  // Modifié pour être un tableau de chaînes
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private videoRobotViewService: VideoRobotViewService, private http: HttpClient,
-              private ngZone: NgZone,private cdr: ChangeDetectorRef) {
+  constructor(
+    private videoRobotViewService: VideoRobotViewService,
+    private http: HttpClient,
+    private ngZone: NgZone,
+    private cdr: ChangeDetectorRef
+  ) {
     this.videoPath = videoRobotViewService.getVideoPath();
+  }
 
+  updateSelection(event: any) {
+    if (event.target.checked) {
+      this.selectedColors.push(event.target.value);
+    } else {
+      this.selectedColors = this.selectedColors.filter(color => color !== event.target.value);
+    }
   }
-  getBallData(){
-    return this.videoRobotViewService.getBallData()
+
+
+  submitColors(selectedColors: string[]): void {
+    this.videoRobotViewService.updateActiveColors(selectedColors).subscribe({
+      next: (response) => console.log(response),
+      error: (error) => console.error('Error updating colors:', error)
+    });
   }
+
 
   ngOnInit() {
     this.subscriptions.add(
@@ -54,6 +72,7 @@ export class ModeSuiveurDeBalleComponent implements OnInit, OnDestroy {
     }
     // Assure que les données sont dans le bon format, en particulier pour 'position'
     return data.map((ball: any) => ({
-      ...ball,
-          }));
-  }}
+      ...ball
+    }));
+  }
+}

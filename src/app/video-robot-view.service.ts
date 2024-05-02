@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Observable, throwError} from 'rxjs';
-import {catchError, tap} from "rxjs/operators";
 import {HttpClient} from '@angular/common/http';
 import { io } from 'socket.io-client';
 
@@ -9,6 +8,12 @@ export interface BallData {
   area: number;
   color: string;
   position: number[];
+
+}
+
+export interface SelectedColors {
+  status:string;
+  activeColors: string[];
 
 }
 
@@ -36,14 +41,8 @@ export class VideoRobotViewService {
     });
   }
 
-  getBallData(): Observable<BallData[]> {
-    return this.http.get<BallData[]>(`${this.apiUrl}/get_detections`).pipe(
-      tap(response => console.log("Réponse de get_detections:", response)),
-      catchError((error: any) => {
-        console.error("Erreur lors de l'acces à get_detections:", error);
-        return throwError(() => new Error(error));
-      })
-    );
+  updateActiveColors(selectedColors: string[]): Observable<SelectedColors> {
+    return this.http.post<SelectedColors>(this.apiUrl+'/update_active_colors', {colors: selectedColors});
   }
 
   getVideoPath(): string {
