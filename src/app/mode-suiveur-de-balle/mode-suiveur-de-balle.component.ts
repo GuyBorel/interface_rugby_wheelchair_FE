@@ -17,7 +17,7 @@ import { ChangeDetectorRef } from '@angular/core';
 export class ModeSuiveurDeBalleComponent implements OnInit, OnDestroy {
   videoPath: string;
   balls: BallData[] = [];
-  colorOptions = ['bleu', 'orange', 'jaune'];
+  colorOptions = ['bleu', 'orange', 'jaune','blanc','vert clair','or'];
   selectedColors: string[] = [];  // Modifié pour être un tableau de chaînes
   private subscriptions: Subscription = new Subscription();
 
