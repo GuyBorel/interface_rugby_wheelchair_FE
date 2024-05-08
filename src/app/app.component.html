@@ -6,9 +6,9 @@
 
   <!-- Deuxième rangée : Contenu des modes et Router Outlet -->
   <div class="row">
-    <div class="col">
-      <app-menu></app-menu>
-    </div>
+    <app-menu></app-menu>
+  </div>
+  <div class="row">
     <!-- Colonne pour le contenu des modes -->
     <div class="col">
       <div *ngIf="menuService.isModeActive(0)">
@@ -27,10 +27,8 @@
       </div>
     </div>
 
-    <div class="col">
+    <div class="col-sm-2">
       <app-bouton-stop></app-bouton-stop>
-
-
     </div>
   </div>
 </div>
