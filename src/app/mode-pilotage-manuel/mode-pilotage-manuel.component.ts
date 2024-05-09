@@ -27,6 +27,10 @@ export class ModePilotageManuelComponent {
     this.direction = "Reculer";
   }
 
+  stopRobot() {
+    this.direction = "Stop";
+  }
+
   tournerDroite() {
     this.direction = "Droite";
   }

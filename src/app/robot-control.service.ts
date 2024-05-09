@@ -1,33 +1,53 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { io, Socket } from 'socket.io-client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RobotControlService {
-  private direction: string;
+  private apiUrl = 'http://192.168.1.69:5000'; // Server URL
+  private socket: Socket;
+  private connected = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
-    this.direction = "Arret";
+    this.initializeWebSocketConnection();
+    this.socket = io(this.apiUrl);  // Initialization within the constructor
   }
 
-  getDirection() {
-    return "Avance";
+  initializeWebSocketConnection() {
+    this.socket = io(this.apiUrl);
+    this.socket.on('status_update', (data: { connected: boolean }) => {
+      this.connected.next(data.connected);
+    });
+    this.socket.on('connect', () => {
+      console.log('Connected to server via WebSocket');
+      this.socket.emit('check_status');  // Ask for current status immediately on connection
+    });
+    this.socket.on('disconnect', () => {
+      this.connected.next(false);
+      console.log('Socket disconnected');
+    });
   }
 
-  setDirection(direction: string) {
-    this.direction = direction;
-    this.http.post('http://192.168.1.187:31000/set_direction', { direction: this.direction }).subscribe({
+  isConnected(): Observable<boolean> {
+    return this.connected.asObservable();
+  }
+
+
+  setDirection(direction: string): void {
+    this.http.post(`${this.apiUrl}/set_direction`, { direction }).subscribe({
       next: response => console.log('Direction set', response),
       error: error => console.error('Error setting direction', error)
     });
   }
 
-  envoyerCommande() {
-    // TODO Implémenter la logique pour envoyer une commande
+  sendCommand(command: string): void {
+    this.socket.emit('send_command', { command });
   }
 
-  envoyerAudio(audioBlob: Blob) {
-    // TODO Implémenter la logique pour envoyer l'audio
+  getDirection(): string {
+    return 'stop';
   }
 }
