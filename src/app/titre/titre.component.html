@@ -1,13 +1,14 @@
 <div class="container d-flex justify-content-center align-items-center">
   <div class="row">
-    <div class="col-auto">
-      <img style="max-width: 100px;" src="favicon.ico">
+    <div class="col">
+      <img  ngSrc="favicon.ico" alt="Logo" height="100" width="100">
     </div>
     <div class="col">
-      <h1 class="text-center">{{ title + service.getSelectedMode()?.label }}</h1>
+      <h1 class="text-center"><b>{{ title + menu.getSelectedMode()?.label }}</b></h1>
     </div>
     <div class="col">
-      <h4>Statut de connexion : {{ statutConnexion }}</h4>
+      <h5><b>Status de connexion au robot : </b> <span [class]="isConnected ? 'online' : 'offline'">{{ isConnected ? 'Connecté' : 'Déconnecté' }}</span></h5>
+
     </div>
   </div>
 </div>
