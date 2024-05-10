@@ -1,17 +1,20 @@
-<div>
-  <button class="btn-success" (click)="toggleRecording()">
+<div class="row">
+   <div class="col">
+  <button type="button" class="btn btn-lg btn-success" (click)="toggleRecording()">
     {{ recording ? 'Arrêter l\'enregistrement' : 'Démarrer l\'enregistrement' }}
   </button>
 
-  <button class="btn-warning" (click)="downloadRecording()" [disabled]="!audioUrl">Télécharger</button>
+  <button type="button" class="col btn btn-lg btn-primary" (click)="downloadRecording()" [disabled]="!audioUrl">Télécharger</button>
   <audio *ngIf="audioUrl && !recording" controls>
     <source [src]="audioUrl" type="audio/wav">
   </audio>
 
-  <button class="btn-dark" (click)="transcribeAudio()" [disabled]="!UploadedFile">Convertir en texte</button>
-  <div *ngIf="transcriptionResult">
-    <p>Résultat de la transcription :</p>
-    <p>{{ transcriptionResult }}</p>
-  </div>
+  <button type="button" class="col btn btn-lg btn-primary btn-warning" (click)="transcribeAudio()" [disabled]="!UploadedFile">Convertir en texte</button>
+   </div >
 
+</div>
+
+<div class="row border border-success"  *ngIf="transcriptionResult">
+  <p>Résultat de la transcription :</p>
+  <p>{{ transcriptionResult }}</p>
 </div>
