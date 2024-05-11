@@ -23,7 +23,7 @@ export interface SelectedColors {
 })
 export class VideoRobotViewService {
   private socket: any;
-  private apiUrl = 'http://192.168.1.69:5000';
+  private apiUrl = 'http://192.168.43.78:5000';
   constructor(private http: HttpClient) {
     this.socket = io(this.apiUrl);
   }

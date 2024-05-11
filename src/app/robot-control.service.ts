@@ -7,7 +7,7 @@ import { io, Socket } from 'socket.io-client';
   providedIn: 'root'
 })
 export class RobotControlService {
-  private apiUrl = 'http://192.168.1.69:5000'; // Server URL
+  private apiUrl = 'http://192.168.43.78:5000'; // Server URL
   private socket: Socket;
   private connected = new BehaviorSubject<boolean>(false);
 
