@@ -14,34 +14,35 @@ export class ModePilotageManuelComponent {
   videoPath: string;
   private direction: string;
 
-  constructor(serviceVideoRobotView: VideoRobotViewService, serviceRobotControl: RobotControlService) {
+  constructor(private serviceVideoRobotView: VideoRobotViewService, private serviceRobotControl: RobotControlService) {
     this.videoPath = serviceVideoRobotView.getVideoPath();
     this.direction = serviceRobotControl.getDirection();
   }
 
   avancer() {
-    this.direction = "Avancer";
+    this.serviceRobotControl.sendCommand('Avancer');  // Sends 'Avancer' command to the backend
   }
 
   reculer() {
-    this.direction = "Reculer";
+    this.serviceRobotControl.sendCommand('Reculer');  // Sends 'Reculer' command to the backend
   }
 
   stopRobot() {
-    this.direction = "Stop";
+    this.serviceRobotControl.sendCommand('Stop');  // Sends 'Stop' command to the backend
   }
 
   tournerDroite() {
-    this.direction = "Droite";
+    this.serviceRobotControl.sendCommand('Droite');  // Sends 'Droite' command to the backend
   }
 
   tournerGauche() {
-    this.direction = "Gauche";
+    this.serviceRobotControl.sendCommand('Gauche');  // Sends 'Gauche' command to the backend
   }
 
   getDirection() {
-    return this.direction;
+    return this.serviceRobotControl.getDirection();  // Retrieves the current direction
   }
+
 
 
 }
