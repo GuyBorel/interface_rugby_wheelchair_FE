@@ -44,6 +44,7 @@ export class RobotControlService {
   }
 
   sendCommand(command: string): void {
+    console.log('Sent command :' + command)
     this.socket.emit('send_command', { command });  // Emitting the command to the backend via Socket.io
   }
 
