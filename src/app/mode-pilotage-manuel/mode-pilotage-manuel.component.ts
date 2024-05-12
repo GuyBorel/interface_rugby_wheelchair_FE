@@ -20,23 +20,24 @@ export class ModePilotageManuelComponent {
   }
 
   avancer() {
-    this.serviceRobotControl.sendCommand('Avancer');  // Sends 'Avancer' command to the backend
+    this.serviceRobotControl.sendCommand('F');
+
   }
 
   reculer() {
-    this.serviceRobotControl.sendCommand('Reculer');  // Sends 'Reculer' command to the backend
-  }
-
-  stopRobot() {
-    this.serviceRobotControl.sendCommand('Stop');  // Sends 'Stop' command to the backend
+    this.serviceRobotControl.sendCommand('B');
   }
 
   tournerDroite() {
-    this.serviceRobotControl.sendCommand('Droite');  // Sends 'Droite' command to the backend
+    this.serviceRobotControl.sendCommand('R');
   }
 
   tournerGauche() {
-    this.serviceRobotControl.sendCommand('Gauche');  // Sends 'Gauche' command to the backend
+    this.serviceRobotControl.sendCommand('L');
+  }
+
+  stopRobot() {
+    this.serviceRobotControl.sendCommand('S');
   }
 
   getDirection() {
