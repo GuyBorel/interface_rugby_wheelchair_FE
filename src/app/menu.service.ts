@@ -26,6 +26,7 @@ export class MenuService {
     this.socket = io(this.apiUrl); // Adjust URL to match your Flask server
     this.socket.on('mode_updated', (mode: { label: string; active: boolean }) => {
     this.currentMode.next(mode);
+    console.log(this.currentMode)
     this.fetchAvailableModes();
     });
 
@@ -58,24 +59,30 @@ export class MenuService {
     );
   }
 
+// In MenuService
   fetchAvailableModes(): void {
-    this.http.get<Mode[]>(`${this.apiUrl}/available_modes`)
-      .subscribe({
-        next: (modes) => {
-          this.modesSubject.next(modes);
-        },
-        error: (error) => {
-          console.error('Error fetching modes:', error);
-        }
-      });
+    this.http.get<Mode[]>(`${this.apiUrl}/available_modes`).subscribe({
+      next: (modes) => {
+        this.modes = modes; // Update the local modes array
+        this.modesSubject.next(modes); // Update the BehaviorSubject
+        console.log("Modes fetched and updated:", modes);
+      },
+      error: (error) => {
+        console.error('Error fetching modes:', error);
+      }
+    });
   }
 
- getModes():Mode[]{
-    return this.modes;
- }
 
-  isModeActive(index: number, modes: { label: string; active: boolean }[]): boolean {
-    return index >= 0 && index < modes.length ? modes[index].active : false;
+ getModes() :Mode[]{
+    return this.modes;
+}
+
+  isModeActive(index: number): boolean {
+    if (index >= 0 && index < this.modes.length) {
+      return this.modes[index].active;
+    }
+    return false;
   }
 
 }

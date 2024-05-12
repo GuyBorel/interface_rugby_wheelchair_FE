@@ -11,18 +11,18 @@
   <div class="row">
     <!-- Colonne pour le contenu des modes -->
     <div class="col-10">
-      <div *ngIf="menuService.isModeActive(0,getModes())">
+      <div *ngIf="menuService.isModeActive(0)">
         <app-mode-pilotage-manuel></app-mode-pilotage-manuel>
       </div>
-      <div *ngIf="menuService.isModeActive(1,getModes())">
+      <div *ngIf="menuService.isModeActive(1)">
         <app-mode-suiveur-de-balle></app-mode-suiveur-de-balle>
       </div>
 
-      <div *ngIf="menuService.isModeActive(2,getModes())">
+      <div *ngIf="menuService.isModeActive(2)">
         <app-mode-commande-vocale></app-mode-commande-vocale>
       </div>
 
-      <div *ngIf="menuService.isModeActive(3,getModes())">
+      <div *ngIf="menuService.isModeActive(3)">
         <app-mode-cartographie></app-mode-cartographie>
       </div>
     </div>

@@ -12,16 +12,18 @@ import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 })
 export class MenuComponent implements OnInit, OnDestroy {
   title = 'Menu de sélection du mode';
-  private modesSubscription!: Subscription;
+  private modesSubscription: Subscription = new Subscription();
+
   modes$: Observable<Mode[]>;
 
   constructor(private menuService: MenuService) {
-    this.modes$ = this.menuService.modes$; // Assign here for use with async pipe
+    this.modes$ = this.menuService.modes$;
+
+
   }
 
   ngOnInit(): void {
-    // Fetch available modes on initialization
-    this.menuService.fetchAvailableModes();
+    this.menuService.fetchAvailableModes(); // Ensure modes are fetched on initialization
   }
 
   setModeActive(mode: Mode): void {
