@@ -4,7 +4,7 @@
       <img  ngSrc="favicon.ico" alt="Logo" height="100" width="100">
     </div>
     <div class="col">
-      <h1 class="text-center"><b>{{ title + menu.getSelectedMode()?.label }}</b></h1>
+      <h1 class="text-center"><b>{{ menu.getSelectedMode()?.label }}</b></h1>
     </div>
     <div class="col">
       <h5><b>Status de connexion au robot : </b> <span [class]="isConnected ? 'online' : 'offline'">{{ isConnected ? 'Connecté' : 'Déconnecté' }}</span></h5>
