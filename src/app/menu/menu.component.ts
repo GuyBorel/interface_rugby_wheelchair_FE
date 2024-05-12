@@ -1,33 +1,36 @@
-import {Component, OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs';
-import {MenuService} from "../menu.service";
-import {NgForOf, NgIf} from "@angular/common";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { MenuService, Mode } from "../menu.service";
+import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [NgForOf, NgIf],
+  imports: [NgForOf, NgIf, AsyncPipe],
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css'] // Corrigé à styleUrls
+  styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnDestroy {
+export class MenuComponent implements OnInit, OnDestroy {
   title = 'Menu de sélection du mode';
-  modes: { label: string; active: boolean; }[] = [];
-  private modesSubscription: Subscription;
+  private modesSubscription!: Subscription;
+  modes$: Observable<Mode[]>;
 
   constructor(private menuService: MenuService) {
-    // S'abonne aux changements des modes et met à jour l'UI de manière réactive
-    this.modesSubscription = this.menuService.modes$.subscribe(modes => {
-      this.modes = modes;
-    });
+    this.modes$ = this.menuService.modes$; // Assign here for use with async pipe
   }
 
-  setMode(i: number) {
-    this.menuService.setModeActive(i);
+  ngOnInit(): void {
+    // Fetch available modes on initialization
+    this.menuService.fetchAvailableModes();
   }
 
-  ngOnDestroy() {
-    // Désabonnement pour éviter les fuites de mémoire
-    this.modesSubscription.unsubscribe();
+  setModeActive(mode: Mode): void {
+    this.menuService.changeMode(mode);
+  }
+
+  ngOnDestroy(): void {
+    if (this.modesSubscription) {
+      this.modesSubscription.unsubscribe();
+    }
   }
 }

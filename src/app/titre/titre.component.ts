@@ -1,34 +1,40 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import { RobotControlService } from "../robot-control.service";
-import { MenuService } from "../menu.service";
-import { NgIf, NgOptimizedImage } from "@angular/common";
+import {MenuService, Mode} from "../menu.service";
+import {AsyncPipe, JsonPipe, NgIf, NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-titre',
   standalone: true,
   imports: [
     NgIf,
-    NgOptimizedImage
+    NgOptimizedImage,
+    AsyncPipe,
+    JsonPipe
   ],
   templateUrl: './titre.component.html',
   styleUrls: ['./titre.component.css']
 })
 export class TitreComponent implements OnInit, OnDestroy {
-  mode: string;
-  title: string;
-  isConnected: boolean = false;
+  isConnected: boolean | undefined;
   private statusSubscription: Subscription;
   menu: MenuService;
+  currentMode$: Observable<Mode>;
+  modes$: Observable<Mode[]>;
 
   constructor(private robotControlService: RobotControlService, private menuService: MenuService) {
     this.menu = menuService;
-    this.mode = "Mode Selection";
-    this.title = "Mode ";
+    this.modes$ = this.menuService.modes$;
+    this.currentMode$ = this.menuService.getSelectedMode();
     // Subscribe to connection status updates
     this.statusSubscription = this.robotControlService.isConnected().subscribe(isConnected => {
-      this.isConnected = isConnected;  // Use this to display connection status in your template
+      this.isConnected = isConnected;
     });
+  }
+
+  getSelectedMode() {
+    return this.currentMode$;
   }
 
   ngOnDestroy() {
@@ -37,5 +43,6 @@ export class TitreComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.menuService.fetchAvailableModes();
   }
 }
