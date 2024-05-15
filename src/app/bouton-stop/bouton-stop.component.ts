@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {RobotControlService} from "../robot-control.service";
 
 @Component({
   selector: 'app-bouton-stop',
@@ -11,8 +12,9 @@ import {Component, EventEmitter, Output} from '@angular/core';
 
 export class BoutonStopComponent {
   @Output() arretUrgence = new EventEmitter<void>();
-
+  constructor(private serviceRobotControl: RobotControlService) {
+  }
   arreterUrgence() {
-    this.arretUrgence.emit();
+    this.serviceRobotControl.sendCommand('S');
   }
 }
