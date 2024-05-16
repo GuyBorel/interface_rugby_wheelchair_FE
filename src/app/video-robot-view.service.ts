@@ -52,6 +52,10 @@ export class VideoRobotViewService {
   getMapPath():string{
     return this.apiUrl+'/map_feed';
   }
+
+  startMapping(): Observable<any> {
+    return this.http.post(this.apiUrl + '/start_mapping', {});
+  }
 }
 
 

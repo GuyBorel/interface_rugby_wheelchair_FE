@@ -22,4 +22,12 @@ export class ModeCartographieComponent {
   ) {
     this.mapPath = videoRobotViewService.getMapPath();
   }
+
+
+
+  startMapping() {
+    this.videoRobotViewService.startMapping().subscribe(response => {
+      console.log('Mapping started:', response);
+    });
+  }
 }
