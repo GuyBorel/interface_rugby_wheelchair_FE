@@ -11,7 +11,7 @@ interface TranscriptionResponse {
   providedIn: 'root'
 })
 export class AudioService {
-  private apiUrl:string = 'http://192.168.80.78:5000'
+  private apiUrl = 'http://192.168.80.229:5000';
   constructor(private http: HttpClient) {
   }
 
