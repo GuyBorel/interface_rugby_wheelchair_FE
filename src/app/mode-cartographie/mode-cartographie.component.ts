@@ -2,18 +2,23 @@ import {ChangeDetectorRef, Component, NgZone} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {VideoRobotViewService} from "../video-robot-view.service";
 import {HttpClient} from "@angular/common/http";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-mode-cartographie',
   standalone: true,
   imports: [
-    NgOptimizedImage
+    NgOptimizedImage,
+    NgIf
   ],
   templateUrl: './mode-cartographie.component.html',
   styleUrl: './mode-cartographie.component.css'
 })
 export class ModeCartographieComponent {
    mapPath:string;
+   showMap: boolean = false;
+   videoPath: string;
+
   constructor(
     private videoRobotViewService: VideoRobotViewService,
     private http: HttpClient,
@@ -21,9 +26,12 @@ export class ModeCartographieComponent {
     private cdr: ChangeDetectorRef
   ) {
     this.mapPath = videoRobotViewService.getMapPath();
+    this.videoPath = videoRobotViewService.getVideoPath();
   }
 
-
+  toggleView(): void {
+    this.showMap = !this.showMap;
+  }
 
   startMapping() {
     this.videoRobotViewService.startMapping().subscribe(response => {
