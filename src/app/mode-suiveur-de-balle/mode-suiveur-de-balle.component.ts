@@ -3,7 +3,6 @@ import {
   BallData,
   VideoViewService,
 } from '../services/video-view.service';
-import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { NgForOf } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
