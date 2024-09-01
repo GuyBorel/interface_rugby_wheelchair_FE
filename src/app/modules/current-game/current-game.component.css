@@ -27,17 +27,17 @@ img {
 .horizontal-values {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Ajoute un espace entre les éléments */
+  gap: 10px;
 }
 
 .horizontal-values > div {
-  flex: 1 1 auto; /* Permet à chaque élément de prendre une taille flexible */
-  text-align: center; /* Centre le texte dans chaque bloc */
+  flex: 1 1 auto;
+  text-align: center;
 }
 
-.value1, .value4, .value5, .value6, .value7 {
-  border: 1px solid #ccc; /* Ajoute une bordure (optionnel) */
-  padding: 10px; /* Ajoute du padding (optionnel) */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Ajoute une ombre (optionnel) */
+.value1, .value4, .value5, .value6 {
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 

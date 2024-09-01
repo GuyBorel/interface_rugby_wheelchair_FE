@@ -1,1 +1,22 @@
 <p>players works!</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><h3>Attaquants</h3></th>
+      <th><h3>Defenseurs</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{ item.column1 }}</td>
+      <td>{{ item.column2 }}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2">Table Footer</td>
+    </tr>
+  </tfoot>
+</table>
+
