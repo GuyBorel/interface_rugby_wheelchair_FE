@@ -3,17 +3,15 @@ import { RouterOutlet } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { TitreComponent } from './titre/titre.component';
 import { MenuService, Mode } from './services/menu.service';
-import { ModePilotageManuelComponent } from './mode-pilotage-manuel/mode-pilotage-manuel.component';
-import { ModeSuiveurDeBalleComponent } from './mode-suiveur-de-balle/mode-suiveur-de-balle.component';
 import { NgForOf, NgIf } from '@angular/common';
-import { ModeCartographieComponent } from './mode-cartographie/mode-cartographie.component';
-import { BoutonStopComponent } from './bouton-stop/bouton-stop.component';
-import { ModeCommandeVocaleComponent } from './mode-commande-vocale/mode-commande-vocale.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CurrentGameComponent } from './modules/current-game/current-game.component';
 import {GamesComponent} from "./modules/games/games.component";
 import {PlayersComponent} from "./modules/players/players.component";
+import {SelectTableComponent} from "./modules/select-table/select-table.component";
+import { FormsModule } from '@angular/forms'; // Import FormsModule
+
 
 @Component({
   selector: 'app-root',
@@ -22,17 +20,15 @@ import {PlayersComponent} from "./modules/players/players.component";
     RouterOutlet,
     MenuComponent,
     TitreComponent,
-    ModePilotageManuelComponent,
-    ModeSuiveurDeBalleComponent,
+    FormsModule,
     NgIf,
-    ModeCartographieComponent,
-    BoutonStopComponent,
-    ModeCommandeVocaleComponent,
     HttpClientModule,
     NgForOf,
     CurrentGameComponent,
     GamesComponent,
     PlayersComponent,
+    SelectTableComponent,
+
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
