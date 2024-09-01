@@ -1,0 +1,20 @@
+<h2>Select Action</h2>
+<div>
+  <label for="component-select">Choose a component to open:</label>
+  <select id="component-select" [(ngModel)]="selectedComponent" (change)="onSelectComponent(selectedComponent)">
+    <option *ngFor="let component of components" [value]="component.value">{{ component.label }}</option>
+  </select>
+</div>
+
+<div *ngIf="selectedComponent === 'add-match'">
+  <app-add-match></app-add-match>
+</div>
+<div *ngIf="selectedComponent === 'add-championship'">
+  <app-add-championship></app-add-championship>
+</div>
+<div *ngIf="selectedComponent === 'add-club'">
+  <app-add-club></app-add-club>
+</div>
+<div *ngIf="selectedComponent === 'add-player'">
+  <app-add-player></app-add-player>
+</div>
