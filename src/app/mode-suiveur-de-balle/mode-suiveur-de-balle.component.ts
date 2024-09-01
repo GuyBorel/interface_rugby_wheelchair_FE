@@ -4,7 +4,7 @@ import {
   VideoViewService,
 } from '../services/video-view.service';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { NgForOf } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 
@@ -24,7 +24,6 @@ export class ModeSuiveurDeBalleComponent implements OnInit, OnDestroy {
 
   constructor(
     private videoRobotViewService: VideoViewService,
-    private http: HttpClient,
     private ngZone: NgZone,
     private cdr: ChangeDetectorRef,
   ) {
