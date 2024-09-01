@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {GameService, Match} from "../../services/game.service";
+import { DatabaseService } from '../../services/database.service';
 import {NgForOf} from "@angular/common";
 
 @Component({

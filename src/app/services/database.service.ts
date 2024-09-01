@@ -50,3 +50,6 @@ export class DatabaseService {
     return this.http.get(`${this.apiUrl}/championships/${championshipId}/matches`);
   }
 }
+
+export class Match {
+}

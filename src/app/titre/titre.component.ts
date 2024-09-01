@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { RobotControlService } from '../services/robot-control.service';
 import { MenuService, Mode } from '../services/menu.service';
 import { AsyncPipe, JsonPipe, NgIf, NgOptimizedImage } from '@angular/common';
 
@@ -13,24 +12,16 @@ import { AsyncPipe, JsonPipe, NgIf, NgOptimizedImage } from '@angular/common';
 })
 export class TitreComponent implements OnInit, OnDestroy {
   isConnected: boolean | undefined;
-  private statusSubscription: Subscription;
   menu: MenuService;
   currentMode$: Observable<Mode>;
   modes$: Observable<Mode[]>;
 
   constructor(
-    private robotControlService: RobotControlService,
     private menuService: MenuService,
   ) {
     this.menu = menuService;
     this.modes$ = this.menuService.modes$;
     this.currentMode$ = this.menuService.getSelectedMode();
-    // Subscribe to connection status updates
-    this.statusSubscription = this.robotControlService
-      .isConnected()
-      .subscribe((isConnected) => {
-        this.isConnected = isConnected;
-      });
   }
 
   getSelectedMode() {
@@ -38,8 +29,6 @@ export class TitreComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // Unsubscribe to ensure no memory leaks
-    this.statusSubscription.unsubscribe();
   }
 
   ngOnInit(): void {

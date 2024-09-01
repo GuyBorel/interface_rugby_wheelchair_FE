@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';  // Add this for ngModel support
-import { DatabaseService } from '../../services/database.service'; // Ensure the service path is correct
+import { DatabaseService } from '../../services/database.service';
 import {NgForOf} from "@angular/common";
 
 @Component({
