@@ -1,41 +1,36 @@
 <div>
-  <label for="team-select">Select a team:</label>
+  <label for="team-select">Select Team:</label>
   <select id="team-select" [(ngModel)]="selectedTeamId" (change)="onTeamSelect()">
-    <option value="" disabled selected>Select your option</option>
     <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</option>
   </select>
 </div>
 
-<div *ngIf="players.length > 0">
-  <h2>Players</h2>
-  <ul>
-    <li *ngFor="let player of players">
-      {{ player.first_name }} {{ player.last_name }} (Rating: {{ player.rating }})
-    </li>
-  </ul>
-</div>
-
-<div *ngIf="players.length === 0 && selectedTeamId">
-  <p>No players found for this team.</p>
-</div>
-
 <table>
   <thead>
-    <tr>
-      <th><h3>Attaquants</h3></th>
-      <th><h3>Defenseurs</h3></th>
-    </tr>
+  <tr>
+    <th><h3>Attacker</h3></th>
+    <th><h3>Defender</h3></th>
+  </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of items">
-      <td>{{ item.column1 }}</td>
-      <td>{{ item.column2 }}</td>
-    </tr>
+  <tr *ngFor="let i of [].constructor(Math.max(attackers.length, defenders.length)); let index = index">
+    <td>
+      <div *ngIf="attackers[index]">
+        <img [src]="attackers[index].photo_url" alt="Player Photo" (error)="imageError($event)" />
+        <p>{{ attackers[index].first_name }} {{ attackers[index].last_name }}</p>
+        <p>Rating: {{ attackers[index].rating }}</p>
+        <p>Club: {{ attackers[index].club_name }}</p>
+      </div>
+    </td>
+    <td>
+      <div *ngIf="defenders[index]">
+        <img [src]="defenders[index].photo_url" alt="Player Photo" (error)="imageError($event)" />
+        <p>{{ defenders[index].first_name }} {{ defenders[index].last_name }}</p>
+        <p>Rating: {{ defenders[index].rating }}</p>
+        <p>Club: {{ defenders[index].club_name }}</p>
+      </div>
+    </td>
+  </tr>
   </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="2">Table Footer</td>
-    </tr>
-  </tfoot>
 </table>
 

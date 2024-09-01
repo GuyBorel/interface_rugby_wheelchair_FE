@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';  // Add this for ngModel support
 import { DatabaseService } from '../../services/database.service'; // Ensure the service path is correct
 import {NgForOf} from "@angular/common";
@@ -8,7 +8,7 @@ import {NgForOf} from "@angular/common";
   selector: 'app-players',
   standalone: true,
   imports: [
-    NgForOf, CommonModule, FormsModule
+    NgForOf, CommonModule, FormsModule, NgOptimizedImage
   ],
   templateUrl: './players.component.html',
   styleUrl: './players.component.css',
@@ -17,6 +17,8 @@ import {NgForOf} from "@angular/common";
 export class PlayersComponent implements OnInit {
   teams: any[] = [];
   players: any[] = [];
+  attackers: any[] = []; // Declare the attackers array
+  defenders: any[] = []; // Declare the defenders array
   selectedTeamId: number | null = null;
   items = [
     { column1: 'Row 1, Column 1', column2: 'Row 1, Column 2' },
@@ -42,6 +44,10 @@ export class PlayersComponent implements OnInit {
       this.databaseService.getPlayers(this.selectedTeamId).subscribe(
         (data) => {
           this.players = data;
+          this.attackers = this.players.filter(player => player.position === 'Attacker');
+          this.defenders = this.players.filter(player => player.position === 'Defender');
+          console.log('Attackers:', this.attackers);
+          console.log('Defenders:', this.defenders);
         },
         (error) => {
           console.error('Error fetching players:', error);
@@ -49,4 +55,16 @@ export class PlayersComponent implements OnInit {
       );
     }
   }
+
+
+  imageError(event: any) {
+    event.target.src = 'assets/images/default-placeholder.png';
+  }
+
+  categorizePlayers() {
+    this.attackers = this.players.filter(player => player.position === 'Attacker');
+    this.defenders = this.players.filter(player => player.position === 'Defender');
+  }
+
+  protected readonly Math = Math;
 }
