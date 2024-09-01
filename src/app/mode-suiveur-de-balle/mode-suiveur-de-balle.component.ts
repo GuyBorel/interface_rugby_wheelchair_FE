@@ -1,8 +1,5 @@
 import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
-import {
-  BallData,
-  VideoViewService,
-} from '../services/video-view.service';
+import { BallData, VideoViewService } from '../services/video-view.service';
 import { Subscription } from 'rxjs';
 import { NgForOf } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';

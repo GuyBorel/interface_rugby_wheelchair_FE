@@ -15,9 +15,7 @@ export class ModeCartographieComponent {
   showMap: boolean = false;
   videoPath: string;
 
-  constructor(
-    private videoRobotViewService: VideoViewService,
-  ) {
+  constructor(private videoRobotViewService: VideoViewService) {
     this.mapPath = videoRobotViewService.getMapPath();
     this.videoPath = videoRobotViewService.getVideoPath();
   }

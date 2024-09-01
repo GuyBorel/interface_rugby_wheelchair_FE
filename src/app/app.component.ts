@@ -11,7 +11,7 @@ import { BoutonStopComponent } from './bouton-stop/bouton-stop.component';
 import { ModeCommandeVocaleComponent } from './mode-commande-vocale/mode-commande-vocale.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {CurrentGameComponent} from "./modules/current-game/current-game.component";
+import { CurrentGameComponent } from './modules/current-game/current-game.component';
 
 @Component({
   selector: 'app-root',
