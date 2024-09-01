@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { VideoRobotViewService } from '../services/video-robot-view.service';
+import { VideoViewService } from '../services/video-view.service';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -16,7 +16,7 @@ export class ModeCartographieComponent {
   videoPath: string;
 
   constructor(
-    private videoRobotViewService: VideoRobotViewService,
+    private videoRobotViewService: VideoViewService,
   ) {
     this.mapPath = videoRobotViewService.getMapPath();
     this.videoPath = videoRobotViewService.getVideoPath();

@@ -17,17 +17,13 @@ export interface SelectedColors {
 @Injectable({
   providedIn: 'root',
 })
-export class VideoRobotViewService {
+export class VideoViewService {
   private socket: any;
   private apiUrl = 'http://192.168.80.229:5000';
   constructor(private http: HttpClient) {
     this.socket = io(this.apiUrl);
   }
 
-  // Emit data to server
-  emit(event: string, data: any) {
-    this.socket.emit(event, data);
-  }
   // Listen for events from the server
   listen(eventName: string): Observable<any> {
     return new Observable((subscriber) => {

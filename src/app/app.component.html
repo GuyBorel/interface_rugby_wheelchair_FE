@@ -12,7 +12,7 @@
     <!-- Colonne pour le contenu des modes -->
     <div class="col-10">
       <div *ngIf="menuService.isModeActive(0)">
-        <app-mode-pilotage-manuel></app-mode-pilotage-manuel>
+        <app-current-game></app-current-game>
       </div>
       <div *ngIf="menuService.isModeActive(1)">
         <app-mode-suiveur-de-balle></app-mode-suiveur-de-balle>

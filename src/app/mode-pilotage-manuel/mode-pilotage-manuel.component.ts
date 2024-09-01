@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { VideoRobotViewService } from '../services/video-robot-view.service';
+import { VideoViewService } from '../services/video-view.service';
 import { RobotControlService } from '../services/robot-control.service';
 import { NgIf, NgOptimizedImage } from '@angular/common';
 
@@ -12,16 +12,14 @@ import { NgIf, NgOptimizedImage } from '@angular/common';
 })
 export class ModePilotageManuelComponent {
   videoPath: string;
-  private direction: string;
   mapPath: string;
   showMap: boolean = false;
 
   constructor(
-    private serviceVideoRobotView: VideoRobotViewService,
+    serviceVideoRobotView: VideoViewService,
     private serviceRobotControl: RobotControlService,
   ) {
     this.videoPath = serviceVideoRobotView.getVideoPath();
-    this.direction = serviceRobotControl.getDirection();
     this.mapPath = serviceVideoRobotView.getMapPath();
   }
   toggleView(): void {

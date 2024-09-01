@@ -11,6 +11,7 @@ import { BoutonStopComponent } from './bouton-stop/bouton-stop.component';
 import { ModeCommandeVocaleComponent } from './mode-commande-vocale/mode-commande-vocale.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {CurrentGameComponent} from "./modules/current-game/current-game.component";
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,7 @@ import { Observable } from 'rxjs';
     ModeCommandeVocaleComponent,
     HttpClientModule,
     NgForOf,
+    CurrentGameComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

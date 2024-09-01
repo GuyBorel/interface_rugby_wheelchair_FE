@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import {
   BallData,
-  VideoRobotViewService,
-} from '../services/video-robot-view.service';
+  VideoViewService,
+} from '../services/video-view.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
 import { NgForOf } from '@angular/common';
@@ -23,7 +23,7 @@ export class ModeSuiveurDeBalleComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
 
   constructor(
-    private videoRobotViewService: VideoRobotViewService,
+    private videoRobotViewService: VideoViewService,
     private http: HttpClient,
     private ngZone: NgZone,
     private cdr: ChangeDetectorRef,
