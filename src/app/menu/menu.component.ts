@@ -11,7 +11,6 @@ import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
   styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit, OnDestroy {
-  title = 'Menu de sélection du mode';
   private modesSubscription: Subscription = new Subscription();
 
   modes$: Observable<Mode[]>;

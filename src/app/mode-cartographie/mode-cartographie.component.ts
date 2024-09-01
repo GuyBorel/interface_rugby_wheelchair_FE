@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { VideoRobotViewService } from '../services/video-robot-view.service';
-import { HttpClient } from '@angular/common/http';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -18,9 +17,6 @@ export class ModeCartographieComponent {
 
   constructor(
     private videoRobotViewService: VideoRobotViewService,
-    private http: HttpClient,
-    private ngZone: NgZone,
-    private cdr: ChangeDetectorRef,
   ) {
     this.mapPath = videoRobotViewService.getMapPath();
     this.videoPath = videoRobotViewService.getVideoPath();
