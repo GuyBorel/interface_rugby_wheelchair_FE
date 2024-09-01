@@ -20,7 +20,7 @@ export class MenuService {
   modes$ = this.modesSubject.asObservable();
   private currentMode = new BehaviorSubject<{ label: string; active: boolean }>({ label: 'Pilotage manuel', active: true });
   private socket: any;
-  private apiUrl = 'http://192.168.80.229:5000';
+  private apiUrl = 'http://192.168.1.69:5000';
 
   constructor(private http: HttpClient) {
     this.socket = io(this.apiUrl); // Adjust URL to match your Flask server
