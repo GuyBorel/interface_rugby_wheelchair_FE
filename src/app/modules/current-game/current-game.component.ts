@@ -11,12 +11,8 @@ import { NgIf, NgOptimizedImage } from '@angular/common';
 })
 export class CurrentGameComponent {
   videoPath: string;
-  showMap: boolean = false;
 
   constructor(serviceVideoView: VideoViewService) {
     this.videoPath = serviceVideoView.getVideoPath();
-  }
-  toggleView(): void {
-    this.showMap = !this.showMap;
   }
 }

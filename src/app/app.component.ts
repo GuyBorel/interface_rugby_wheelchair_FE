@@ -12,8 +12,8 @@ import { ModeCommandeVocaleComponent } from './mode-commande-vocale/mode-command
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CurrentGameComponent } from './modules/current-game/current-game.component';
-import {GamesComponent} from "./modules/games/games.component";
-import {PlayersComponent} from "./modules/players/players.component";
+import { GamesComponent } from './modules/games/games.component';
+import { PlayersComponent } from './modules/players/players.component';
 
 @Component({
   selector: 'app-root',
