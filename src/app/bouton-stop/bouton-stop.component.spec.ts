@@ -8,10 +8,9 @@ describe('BoutonStopComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BoutonStopComponent]
-    })
-    .compileComponents();
-    
+      imports: [BoutonStopComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(BoutonStopComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

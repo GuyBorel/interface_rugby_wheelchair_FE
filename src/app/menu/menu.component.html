@@ -5,17 +5,27 @@
     <a class="navbar-brand" href="#">Interface Robot Explorateur</a>
 
     <!-- Toggler/collapsible Button -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" *ngFor="let mode of modes$ | async"
-            (click)="setModeActive(mode)" [class.active]="mode.active">
+        <li
+          class="nav-item"
+          *ngFor="let mode of modes$ | async"
+          (click)="setModeActive(mode)"
+          [class.active]="mode.active"
+        >
           <a class="nav-link" href="javascript:void(0);">{{ mode.label }}</a>
         </li>
       </ul>

@@ -8,10 +8,9 @@ describe('ModeSuiveurDeBalleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModeSuiveurDeBalleComponent]
-    })
-    .compileComponents();
-    
+      imports: [ModeSuiveurDeBalleComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ModeSuiveurDeBalleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

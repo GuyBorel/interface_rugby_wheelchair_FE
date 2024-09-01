@@ -8,10 +8,9 @@ describe('ModeCommandeVocaleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModeCommandeVocaleComponent]
-    })
-    .compileComponents();
-    
+      imports: [ModeCommandeVocaleComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ModeCommandeVocaleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

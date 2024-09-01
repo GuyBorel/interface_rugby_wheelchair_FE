@@ -1,27 +1,25 @@
-import {Component} from '@angular/core';
-import {VideoRobotViewService} from "../video-robot-view.service";
-import {RobotControlService} from "../robot-control.service";
-import {NgIf, NgOptimizedImage} from "@angular/common";
+import { Component } from '@angular/core';
+import { VideoRobotViewService } from '../services/video-robot-view.service';
+import { RobotControlService } from '../services/robot-control.service';
+import { NgIf, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-mode-pilotage-manuel',
   standalone: true,
-  imports: [
-    NgOptimizedImage,
-    NgIf
-  ],
+  imports: [NgOptimizedImage, NgIf],
   templateUrl: './mode-pilotage-manuel.component.html',
-  styleUrl: './mode-pilotage-manuel.component.css'
+  styleUrl: './mode-pilotage-manuel.component.css',
 })
 export class ModePilotageManuelComponent {
-
   videoPath: string;
   private direction: string;
   mapPath: string;
   showMap: boolean = false;
 
-
-  constructor(private serviceVideoRobotView: VideoRobotViewService, private serviceRobotControl: RobotControlService) {
+  constructor(
+    private serviceVideoRobotView: VideoRobotViewService,
+    private serviceRobotControl: RobotControlService,
+  ) {
     this.videoPath = serviceVideoRobotView.getVideoPath();
     this.direction = serviceRobotControl.getDirection();
     this.mapPath = serviceVideoRobotView.getMapPath();
@@ -31,7 +29,6 @@ export class ModePilotageManuelComponent {
   }
   avancer() {
     this.serviceRobotControl.sendCommand('F');
-
   }
 
   reculer() {
@@ -51,9 +48,6 @@ export class ModePilotageManuelComponent {
   }
 
   getDirection() {
-    return this.serviceRobotControl.getDirection();  // Retrieves the current direction
+    return this.serviceRobotControl.getDirection(); // Retrieves the current direction
   }
-
-
-
 }

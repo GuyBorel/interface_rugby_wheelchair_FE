@@ -8,10 +8,9 @@ describe('ModePilotageManuelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModePilotageManuelComponent]
-    })
-    .compileComponents();
-    
+      imports: [ModePilotageManuelComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ModePilotageManuelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

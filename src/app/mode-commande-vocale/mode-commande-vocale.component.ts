@@ -1,16 +1,14 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import RecordRTC from 'recordrtc';
-import {NgIf} from "@angular/common";
-import {AudioService} from "../audio.service";
+import { NgIf } from '@angular/common';
+import { AudioService } from '../services/audio.service';
 
 @Component({
   selector: 'app-mode-commande-vocale',
   templateUrl: './mode-commande-vocale.component.html',
   standalone: true,
-  imports: [
-    NgIf
-  ],
-  styleUrls: ['./mode-commande-vocale.component.css']
+  imports: [NgIf],
+  styleUrls: ['./mode-commande-vocale.component.css'],
 })
 export class ModeCommandeVocaleComponent {
   private recordRTC: any;
@@ -20,18 +18,22 @@ export class ModeCommandeVocaleComponent {
   private uploadedFile: File | null = null;
   public transcriptionResult: string = '';
 
-
-  constructor(private cd: ChangeDetectorRef, private audioService: AudioService) {
-  }
+  constructor(
+    private cd: ChangeDetectorRef,
+    private audioService: AudioService,
+  ) {}
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
-      this.audioService.uploadAudio(file).subscribe(response => {
-        console.log("Réponse de l'API :", response);
-      }, error => {
-        console.error("Erreur lors de l'envoi du fichier :", error);
-      });
+      this.audioService.uploadAudio(file).subscribe(
+        (response) => {
+          console.log("Réponse de l'API :", response);
+        },
+        (error) => {
+          console.error("Erreur lors de l'envoi du fichier :", error);
+        },
+      );
     }
   }
 
@@ -47,21 +49,23 @@ export class ModeCommandeVocaleComponent {
     if (this.recordRTC) {
       this.recordRTC.stopRecording(() => {
         let audioBlob = this.recordRTC.getBlob();
-        const audioFile = new File([audioBlob], "audio_recording.ogg", {type: "audio/ogg"});
+        const audioFile = new File([audioBlob], 'audio_recording.ogg', {
+          type: 'audio/ogg',
+        });
         this.audioUrl = URL.createObjectURL(audioFile);
         this.recording = false;
         this.uploadedFile = audioFile;
         this.cd.detectChanges(); // Force la détection de changement ici
-
       });
     }
   }
 
-
   async startRecording() {
     try {
-      this.mediaStream = await navigator.mediaDevices.getUserMedia({audio: true});
-      this.recordRTC = new RecordRTC(this.mediaStream, {type: 'audio'});
+      this.mediaStream = await navigator.mediaDevices.getUserMedia({
+        audio: true,
+      });
+      this.recordRTC = new RecordRTC(this.mediaStream, { type: 'audio' });
       this.recordRTC.startRecording();
       this.recording = true;
     } catch (error) {
@@ -69,10 +73,9 @@ export class ModeCommandeVocaleComponent {
     }
   }
 
-
   uploadAudio(file: File | null) {
     if (!file) {
-      console.error("Aucun fichier à téléverser.");
+      console.error('Aucun fichier à téléverser.');
       return;
     }
     this.audioService.uploadAudio(file);
@@ -97,21 +100,18 @@ export class ModeCommandeVocaleComponent {
 
   transcribeAudio() {
     if (!this.uploadedFile) {
-      console.error("Aucun fichier audio à transcrire.");
+      console.error('Aucun fichier audio à transcrire.');
       return;
     }
 
     this.audioService.uploadAudioForTranscription(this.uploadedFile).subscribe({
       next: (response) => {
-        console.log("Transcription:", response.transcription);
-        this.transcriptionResult = response.transcription
+        console.log('Transcription:', response.transcription);
+        this.transcriptionResult = response.transcription;
       },
       error: (err) => {
-        console.error("Erreur lors de la transcription:", err);
-      }
+        console.error('Erreur lors de la transcription:', err);
+      },
     });
-
   }
-
 }
-

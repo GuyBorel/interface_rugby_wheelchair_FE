@@ -8,10 +8,9 @@ describe('ModeCartographieComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModeCartographieComponent]
-    })
-    .compileComponents();
-    
+      imports: [ModeCartographieComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ModeCartographieComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

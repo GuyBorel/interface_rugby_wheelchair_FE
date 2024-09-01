@@ -1,26 +1,33 @@
 <div class="row">
-<div class="col">
-    <img class="border border-success" [src]="videoPath" alt="Video Feed">
-</div>
+  <div class="col">
+    <img class="border border-success" [src]="videoPath" alt="Video Feed" />
+  </div>
 
-
-
-<div class="col">
-  <h5>Choisissez les couleurs à détecter :</h5>
+  <div class="col">
+    <h5>Choisissez les couleurs à détecter :</h5>
     <div class="form-check">
-<div class="" *ngFor="let color of colorOptions">
-  <input type="checkbox"  [value]="color" (change)="updateSelection($event)"> {{color}}
-</div>
+      <div class="" *ngFor="let color of colorOptions">
+        <input
+          type="checkbox"
+          [value]="color"
+          (change)="updateSelection($event)"
+        />
+        {{ color }}
+      </div>
     </div>
-    <button type="button" class="col btn btn-lg btn-primary btn-success" (click)="submitColors(selectedColors)">Update Colors</button>
-
-</div>
+    <button
+      type="button"
+      class="col btn btn-lg btn-primary btn-success"
+      (click)="submitColors(selectedColors)"
+    >
+      Update Colors
+    </button>
+  </div>
 </div>
 <div class="row">
-<div class="col" *ngFor="let ball of balls">
-  <p>Color: {{ ball.color }}</p>
-  <p>Position: X: {{ ball.position[0] }}, Y: {{ ball.position[1]}}</p>
-  <p>Size: {{ ball.area }}</p>
-</div>
-
+  <div class="col" *ngFor="let ball of balls">
+    <p>Color: {{ ball.color }}</p>
+    <p>Position: X: {{ ball.position[0] }}, Y: {{ ball.position[1] }}</p>
+    <p>Size: {{ ball.area }}</p>
+  </div>
 </div>

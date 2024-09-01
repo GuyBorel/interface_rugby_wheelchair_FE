@@ -1,24 +1,21 @@
 import { Injectable } from '@angular/core';
-import {Observable, throwError} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { io } from 'socket.io-client';
-
 
 export interface BallData {
   area: number;
   color: string;
   position: number[];
-
 }
 
 export interface SelectedColors {
-  status:string;
+  status: string;
   activeColors: string[];
-
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VideoRobotViewService {
   private socket: any;
@@ -35,27 +32,28 @@ export class VideoRobotViewService {
   listen(eventName: string): Observable<any> {
     return new Observable((subscriber) => {
       this.socket.on(eventName, (data: any) => {
-        console.log('Received data:', data);  // Log received data
+        console.log('Received data:', data); // Log received data
         subscriber.next(data);
       });
     });
   }
 
   updateActiveColors(selectedColors: string[]): Observable<SelectedColors> {
-    return this.http.post<SelectedColors>(this.apiUrl+'/update_active_colors', {colors: selectedColors});
+    return this.http.post<SelectedColors>(
+      this.apiUrl + '/update_active_colors',
+      { colors: selectedColors },
+    );
   }
 
   getVideoPath(): string {
-    return this.apiUrl+'/video_feed';
+    return this.apiUrl + '/video_feed';
   }
 
-  getMapPath():string{
-    return this.apiUrl+'/map_feed';
+  getMapPath(): string {
+    return this.apiUrl + '/map_feed';
   }
 
   startMapping(): Observable<any> {
     return this.http.post(this.apiUrl + '/start_mapping', {});
   }
 }
-
-
