@@ -16,9 +16,7 @@ export class TitreComponent implements OnInit, OnDestroy {
   currentMode$: Observable<Mode>;
   modes$: Observable<Mode[]>;
 
-  constructor(
-    private menuService: MenuService,
-  ) {
+  constructor(private menuService: MenuService) {
     this.menu = menuService;
     this.modes$ = this.menuService.modes$;
     this.currentMode$ = this.menuService.getSelectedMode();
@@ -28,8 +26,7 @@ export class TitreComponent implements OnInit, OnDestroy {
     return this.currentMode$;
   }
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 
   ngOnInit(): void {
     this.menuService.fetchAvailableModes();

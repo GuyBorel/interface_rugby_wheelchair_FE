@@ -1,8 +1,14 @@
 <h2>Select Action</h2>
 <div>
   <label for="component-select">Choose a component to open:</label>
-  <select id="component-select" [(ngModel)]="selectedComponent" (change)="onSelectComponent(selectedComponent)">
-    <option *ngFor="let component of components" [value]="component.value">{{ component.label }}</option>
+  <select
+    id="component-select"
+    [(ngModel)]="selectedComponent"
+    (change)="onSelectComponent(selectedComponent)"
+  >
+    <option *ngFor="let component of components" [value]="component.value">
+      {{ component.label }}
+    </option>
   </select>
 </div>
 

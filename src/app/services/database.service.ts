@@ -3,12 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DatabaseService {
   private apiUrl = 'http://192.168.1.69:5000'; // URL de ton backend Flask
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // Méthode pour ajouter un club
   addClub(clubData: any): Observable<any> {
@@ -47,9 +47,10 @@ export class DatabaseService {
 
   // Méthode pour récupérer les matchs d'un championnat spécifique
   getMatches(championshipId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/championships/${championshipId}/matches`);
+    return this.http.get(
+      `${this.apiUrl}/championships/${championshipId}/matches`,
+    );
   }
 }
 
-export class Match {
-}
+export class Match {}
