@@ -35,9 +35,11 @@ img {
   text-align: center;
 }
 
-.value1, .value4, .value5, .value6 {
+.value1,
+.value4,
+.value5,
+.value6 {
   border: 1px solid #ccc;
   padding: 10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
-
