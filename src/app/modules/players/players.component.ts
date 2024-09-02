@@ -58,7 +58,7 @@ export class PlayersComponent implements OnInit {
 
 
   imageError(event: any) {
-    event.target.src = 'assets/images/default-placeholder.png';
+    event.target.src = 'assets/images/placeholder.webp';
   }
 
   categorizePlayers() {
