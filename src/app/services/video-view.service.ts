@@ -19,37 +19,12 @@ export interface SelectedColors {
 })
 export class VideoViewService {
   private socket: any;
-  private apiUrl = 'http://192.168.1.69:5000';
+  private apiUrl = 'http://10.18.9.234:5000';
   constructor(private http: HttpClient) {
     this.socket = io(this.apiUrl);
   }
 
-  // Listen for events from the server
-  listen(eventName: string): Observable<any> {
-    return new Observable((subscriber) => {
-      this.socket.on(eventName, (data: any) => {
-        console.log('Received data:', data); // Log received data
-        subscriber.next(data);
-      });
-    });
-  }
-
-  updateActiveColors(selectedColors: string[]): Observable<SelectedColors> {
-    return this.http.post<SelectedColors>(
-      this.apiUrl + '/update_active_colors',
-      { colors: selectedColors },
-    );
-  }
-
   getVideoPath(): string {
     return this.apiUrl + '/video_feed';
-  }
-
-  getMapPath(): string {
-    return this.apiUrl + '/map_feed';
-  }
-
-  startMapping(): Observable<any> {
-    return this.http.post(this.apiUrl + '/start_mapping', {});
   }
 }

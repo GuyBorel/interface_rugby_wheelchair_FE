@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DatabaseService {
-  private apiUrl = 'http://192.168.1.69:5000'; // URL de ton backend Flask
+  private apiUrl = 'http://10.18.9.234:5000'; // URL de ton backend Flask
 
   constructor(private http: HttpClient) {}
 

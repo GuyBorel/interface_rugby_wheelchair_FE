@@ -26,10 +26,10 @@
       "
     >
       <td>
-        <div *ngIf="attackers[index]">
+        <div *ngIf="attackers[index]" class="figure-img">
           <img
             [src]="attackers[index].photo_url"
-            alt="Player Photo"
+            alt="Player"
             (error)="imageError($event)"
           />
           <p>
@@ -40,10 +40,10 @@
         </div>
       </td>
       <td>
-        <div *ngIf="defenders[index]">
+        <div *ngIf="defenders[index]" class="figure-img">
           <img
             [src]="defenders[index].photo_url"
-            alt="Player Photo"
+            alt="Player"
             (error)="imageError($event)"
           />
           <p>
