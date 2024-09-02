@@ -21,7 +21,7 @@ export class MenuService {
     { label: 'Pilotage manuel', active: true },
   );
   private socket: any;
-  private apiUrl = ' http://10.18.9.234:5000';
+  private apiUrl = 'http://192.168.1.69:5000';
 
   constructor(private http: HttpClient) {
     this.socket = io(this.apiUrl); // Adjust URL to match your Flask server

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable, tap} from 'rxjs';
+import {Match} from "../models/match.model";
+import { Championship } from '../models/championship.model'; // Adjust the path as necessary
 
 @Injectable({
   providedIn: 'root',
 })
 export class DatabaseService {
-  private apiUrl = 'http://10.18.9.234:5000'; // URL de ton backend Flask
+  private apiUrl = 'http://192.168.1.69:5000'; // URL de ton backend Flask
 
   constructor(private http: HttpClient) {}
 
@@ -35,22 +37,31 @@ export class DatabaseService {
     return this.http.post(`${this.apiUrl}/add_championship`, championshipData);
   }
 
-  // Méthode pour récupérer tous les championnats
-  getChampionships(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/championships`);
+  // Method to fetch all championships
+  getChampionships(): Observable<Championship[]> {
+    return this.http.get<Championship[]>(`${this.apiUrl}/championships`)
+      .pipe(
+        tap(data => console.log('Fetched Championships:', data))  // Log the fetched data
+      );
   }
-
   // Méthode pour ajouter un match
   addMatch(matchData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/add_match`, matchData);
   }
 
-  // Méthode pour récupérer les matchs d'un championnat spécifique
-  getMatches(championshipId: number): Observable<any> {
-    return this.http.get(
-      `${this.apiUrl}/championships/${championshipId}/matches`,
-    );
+// Method in DatabaseService
+  getMatches(championshipId: number): Observable<Match[]> {
+    return this.http.get<Match[]>(`${this.apiUrl}/championships/${championshipId}/matches`);
   }
+
+  // Method to get all matches
+  getAllMatches(): Observable<Match[]> {
+    return this.http.get<Match[]>(`${this.apiUrl}/matches`);
+  }
+
+
+
+
+
 }
 
-export class Match {}
