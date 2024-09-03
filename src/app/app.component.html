@@ -12,20 +12,19 @@
     <!-- Colonne pour le contenu des modes -->
     <div class="col-10">
       <div *ngIf="menuService.isModeActive(0)">
-        <app-mode-pilotage-manuel></app-mode-pilotage-manuel>
+        <app-current-game></app-current-game>
       </div>
       <div *ngIf="menuService.isModeActive(1)">
-        <app-mode-suiveur-de-balle></app-mode-suiveur-de-balle>
+        <app-games></app-games>
       </div>
 
       <div *ngIf="menuService.isModeActive(2)">
-        <app-mode-commande-vocale></app-mode-commande-vocale>
+        <app-players></app-players>
       </div>
-
+      <div *ngIf="menuService.isModeActive(3)">
+        <app-select-table></app-select-table>
+      </div>
     </div>
-
-
-
   </div>
 </div>
 <router-outlet></router-outlet>

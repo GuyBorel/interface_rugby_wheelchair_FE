@@ -1,0 +1,30 @@
+<h2>Add New Championship</h2>
+<form (ngSubmit)="onSubmit()">
+  <label for="year">Year:</label>
+  <input
+    type="number"
+    id="year"
+    [(ngModel)]="championshipData.year"
+    name="year"
+    required
+  /><br />
+
+  <label for="division">Division:</label>
+  <input
+    type="text"
+    id="division"
+    [(ngModel)]="championshipData.division"
+    name="division"
+    required
+  /><br />
+
+  <label for="champion_club_id">Champion Club ID:</label>
+  <input
+    type="number"
+    id="champion_club_id"
+    [(ngModel)]="championshipData.champion_club_id"
+    name="champion_club_id"
+  /><br />
+
+  <button type="submit">Add Championship</button>
+</form>

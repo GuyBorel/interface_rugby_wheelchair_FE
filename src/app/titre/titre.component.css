@@ -5,3 +5,7 @@
 .offline {
   color: red;
 }
+
+.col {
+  text-align: right;
+}
