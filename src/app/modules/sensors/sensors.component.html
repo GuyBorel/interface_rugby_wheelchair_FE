@@ -1,0 +1,36 @@
+<div>
+  <h3>Select Sensor</h3>
+  <select (change)="onSensorSelect($event)">
+    <option *ngFor="let sensor of sensors" [value]="sensor">{{ sensor }}</option>
+  </select>
+</div>
+
+<!-- Line chart for Temperature and Humidity -->
+<div>
+  <h3>Temperature and Humidity Over Time</h3>
+  <canvas baseChart
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [type]="'line'">
+  </canvas>
+</div>
+
+<!-- Bar chart for Shocks Detected -->
+<div>
+  <h3>Shocks Detected Over Time</h3>
+  <canvas baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="'bar'">
+  </canvas>
+</div>
+
+<!-- Line chart for Heart Rate -->
+<div>
+  <h3>Heart Rate Over Time</h3>
+  <canvas baseChart
+          [data]="heartRateChartData"
+          [options]="lineChartOptions"
+          [type]="'line'">
+  </canvas>
+</div>
