@@ -60,6 +60,15 @@ export class DatabaseService {
   }
 
 
+  // Fetch list of sensors
+  getSensors(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/sensors`);
+  }
+
+  // Fetch temperature, humidity, and other data for a specific sensor
+  getSensorData(sensorId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/sensor_data/${sensorId}`);
+  }
 
 
 
