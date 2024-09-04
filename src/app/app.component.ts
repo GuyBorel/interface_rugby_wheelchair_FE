@@ -10,7 +10,8 @@ import { CurrentGameComponent } from './modules/current-game/current-game.compon
 import {GamesComponent} from "./modules/games/games.component";
 import {PlayersComponent} from "./modules/players/players.component";
 import {SelectTableComponent} from "./modules/select-table/select-table.component";
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
+import {SensorsComponent} from "./modules/sensors/sensors.component"; // Import FormsModule
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,7 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
     GamesComponent,
     PlayersComponent,
     SelectTableComponent,
+    SensorsComponent,
 
   ],
   templateUrl: './app.component.html',
