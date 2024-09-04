@@ -1,22 +1,144 @@
 <h2>Add New Player</h2>
-<form (ngSubmit)="onSubmit()">
-  <label for="first_name">First Name:</label>
-  <input type="text" id="first_name" [(ngModel)]="playerData.first_name" name="first_name" required><br>
+<form
+  (ngSubmit)="onSubmit()"
+  style="
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  "
+>
+  <div style="margin-bottom: 15px">
+    <label for="first_name" style="display: block; margin-bottom: 5px"
+    >First Name:</label
+    >
+    <input
+      type="text"
+      id="first_name"
+      [(ngModel)]="playerData.first_name"
+      name="first_name"
+      required
+      style="
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      "
+    />
+  </div>
 
-  <label for="last_name">Last Name:</label>
-  <input type="text" id="last_name" [(ngModel)]="playerData.last_name" name="last_name" required><br>
+  <div style="margin-bottom: 15px">
+    <label for="last_name" style="display: block; margin-bottom: 5px"
+    >Last Name:</label
+    >
+    <input
+      type="text"
+      id="last_name"
+      [(ngModel)]="playerData.last_name"
+      name="last_name"
+      required
+      style="
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      "
+    />
+  </div>
 
-  <label for="photo_url">Photo URL:</label>
-  <input type="text" id="photo_url" [(ngModel)]="playerData.photo_url" name="photo_url"><br>
+  <div style="margin-bottom: 15px">
+    <label for="photo_url" style="display: block; margin-bottom: 5px"
+    >Photo URL:</label
+    >
+    <input
+      type="text"
+      id="photo_url"
+      [(ngModel)]="playerData.photo_url"
+      name="photo_url"
+      style="
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      "
+    />
+  </div>
 
-  <label for="rating">Rating (0.5 - 3.5):</label>
-  <input type="number" step="0.1" id="rating" [(ngModel)]="playerData.rating" name="rating"><br>
+  <div style="margin-bottom: 15px">
+    <label for="rating" style="display: block; margin-bottom: 5px"
+    >Rating (0.5 - 3.5):</label
+    >
+    <input
+      type="number"
+      step="0.5"
+      min="0.5"
+      max="3.5"
+      id="rating"
+      [(ngModel)]="playerData.rating"
+      name="rating"
+      style="
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      "
+    />
+  </div>
 
-  <label for="position">Position:</label>
-  <input type="text" id="position" [(ngModel)]="playerData.position" name="position"><br>
+  <div style="margin-bottom: 15px">
+    <label for="position" style="display: block; margin-bottom: 5px"
+    >Position:</label
+    >
+    <select
+      id="position"
+      [(ngModel)]="playerData.position"
+      name="position"
+      style="
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      "
+    >
+      <option value="Attacker">Attacker</option>
+      <option value="Defender">Defender</option>
+    </select>
+  </div>
 
-  <label for="club_id">Club ID:</label>
-  <input type="number" id="club_id" [(ngModel)]="playerData.club_id" name="club_id" required><br>
+  <div style="margin-bottom: 15px">
+    <label for="club_id" style="display: block; margin-bottom: 5px"
+    >Club ID:</label
+    >
+    <input
+      type="number"
+      id="club_id"
+      [(ngModel)]="playerData.club_id"
+      name="club_id"
+      required
+      style="
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      "
+    />
+  </div>
 
-  <button type="submit">Add Player</button>
+  <button
+    type="submit"
+    style="
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    "
+  >
+    Add Player
+  </button>
 </form>

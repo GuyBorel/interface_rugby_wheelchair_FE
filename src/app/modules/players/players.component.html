@@ -1,7 +1,13 @@
 <div>
   <label for="team-select">Select Team:</label>
-  <select id="team-select" [(ngModel)]="selectedTeamId" (change)="onTeamSelect()">
-    <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</option>
+  <select
+    id="team-select"
+    [(ngModel)]="selectedTeamId"
+    (change)="onTeamSelect()"
+  >
+    <option *ngFor="let team of teams" [value]="team.id">
+      {{ team.name }}
+    </option>
   </select>
 </div>
 
@@ -13,19 +19,40 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let i of [].constructor(Math.max(attackers.length, defenders.length)); let index = index">
+  <tr
+    *ngFor="
+        let i of [].constructor(Math.max(attackers.length, defenders.length));
+        let index = index
+      "
+  >
     <td>
       <div *ngIf="attackers[index]">
-        <img [src]="attackers[index].photo_url" alt="Player Photo" (error)="imageError($event)" />
-        <p>{{ attackers[index].first_name }} {{ attackers[index].last_name }}</p>
+        <img
+          [src]="attackers[index].photo_url"
+          alt="Player Photo"
+          width="100"
+          height="100"
+          (error)="imageError($event)"
+        />
+        <p>
+          {{ attackers[index].first_name }} {{ attackers[index].last_name }}
+        </p>
         <p>Rating: {{ attackers[index].rating }}</p>
         <p>Club: {{ attackers[index].club_name }}</p>
       </div>
     </td>
     <td>
       <div *ngIf="defenders[index]">
-        <img [src]="defenders[index].photo_url" alt="Player Photo" (error)="imageError($event)" />
-        <p>{{ defenders[index].first_name }} {{ defenders[index].last_name }}</p>
+        <img
+          [src]="defenders[index].photo_url"
+          alt="Player Photo"
+          width="100"
+          height="100"
+          (error)="imageError($event)"
+        />
+        <p>
+          {{ defenders[index].first_name }} {{ defenders[index].last_name }}
+        </p>
         <p>Rating: {{ defenders[index].rating }}</p>
         <p>Club: {{ defenders[index].club_name }}</p>
       </div>
@@ -33,4 +60,3 @@
   </tr>
   </tbody>
 </table>
-

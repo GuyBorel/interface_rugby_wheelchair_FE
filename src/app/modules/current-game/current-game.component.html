@@ -1,28 +1,74 @@
 <div class="container">
-  <div class="row " >
+  <!-- Première rangée : Titre et Menu -->
+  <div class="row">
     <div class="col">
       <img class="border border-success" [src]="videoPath" alt="Video Feed" />
     </div>
     <div class="col">
       <ng-container>
-        <div class="horizontal-values">
-          <div class="value1">
-            <h3>Heart Rate: {{ 10 }}</h3>
+        <div>
+          <label for="team-select">Select Team:</label>
+          <select
+            id="team-select"
+            [(ngModel)]="selectedTeamId"
+            (change)="onTeamSelect()"
+          >
+            <option *ngFor="let team of teams" [value]="team.id">
+              {{ team.name }}
+            </option>
+          </select>
+        </div>
+
+        <div *ngIf="players.length > 0">
+          <label for="player-select">Select Player:</label>
+          <select
+            id="player-select"
+            [(ngModel)]="selectedPlayerId"
+            (change)="onPlayerSelect($event)"
+          >
+            <option *ngFor="let player of players" [value]="player.id">
+              {{player.first_name}} {{player.last_name}}
+            </option>
+          </select>
+        </div>
+
+        <div *ngIf="selectedPlayer">
+          <h3>Player Details:</h3>
+          <p>
+            Name: {{ selectedPlayer.first_name }} {{ selectedPlayer.last_name }}
+          </p>
+          <p>Position: {{ selectedPlayer.position }}</p>
+
+          <p>Rating: {{ selectedPlayer.rating }}</p>
+          <p>Club: {{ selectedPlayer.club_name }}</p>
+          <div>
+            <img
+              [src]="selectedPlayer.photo_url"
+              alt="Player Photo"
+              width="100"
+              height="100"
+            />
           </div>
-          <div class="value1">
-            <h3>Time: {{ 10 }} minutes</h3>
-          </div>
-          <div class="value1">
-            <h3>Temperature: {{ 10 }} °C</h3>
-          </div>
-          <div class="value4">
-            <h3>Av Speed: {{ 10 }}</h3>
-          </div>
-          <div class="value5">
-            <h3>Distance: {{ 10 }} m</h3>
-          </div>
-          <div class="value6">
-            <h3>Rating of the positioning: {{ 10 }}</h3>
+
+          <div class="horizontal-values">
+            <div class="value1">
+              <h3>Heart Rate: {{ 10 }}</h3>
+            </div>
+            <div class="value1">
+              <h3>Time: {{ 10 }} minutes</h3>
+            </div>
+            <div class="value1">
+              <h3>Temperature: {{ 10 }} °C</h3>
+            </div>
+            <div class="value4">
+              <h3>Av Speed: {{ 10 }}</h3>
+            </div>
+            <div class="value5">
+              <h3>Distance: {{ 10 }} m</h3>
+            </div>
+            <div class="value6">
+              <h3>Rating of the positioning: {{ 3 }}</h3>
+            </div>
           </div>
         </div>
       </ng-container>
