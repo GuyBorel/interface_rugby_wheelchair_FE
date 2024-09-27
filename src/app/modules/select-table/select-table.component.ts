@@ -9,9 +9,16 @@ import { AddPlayerComponent } from '../add-player/add-player.component';
 @Component({
   selector: 'app-select-table',
   standalone: true,
-  imports: [CommonModule, FormsModule, AddMatchComponent, AddChampionshipComponent, AddClubComponent, AddPlayerComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AddMatchComponent,
+    AddChampionshipComponent,
+    AddClubComponent,
+    AddPlayerComponent,
+  ],
   templateUrl: './select-table.component.html',
-  styleUrls: ['./select-table.component.css']
+  styleUrls: ['./select-table.component.css'],
 })
 export class SelectTableComponent {
   selectedComponent: string = '';
@@ -19,7 +26,7 @@ export class SelectTableComponent {
     { label: 'Add Match', value: 'add-match' },
     { label: 'Add Championship', value: 'add-championship' },
     { label: 'Add Club', value: 'add-club' },
-    { label: 'Add Player', value: 'add-player' }
+    { label: 'Add Player', value: 'add-player' },
   ];
 
   onSelectComponent(component: string) {

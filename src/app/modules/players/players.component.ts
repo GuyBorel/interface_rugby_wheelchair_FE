@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { FormsModule } from '@angular/forms';  // Add this for ngModel support
+import { FormsModule } from '@angular/forms'; // Add this for ngModel support
 import { DatabaseService } from '../../services/database.service';
-import {NgForOf} from "@angular/common";
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-players',
   standalone: true,
-  imports: [
-    NgForOf, CommonModule, FormsModule, NgOptimizedImage
-  ],
+  imports: [NgForOf, CommonModule, FormsModule, NgOptimizedImage],
   templateUrl: './players.component.html',
   styleUrl: './players.component.css',
 })
-
 export class PlayersComponent implements OnInit {
   teams: any[] = [];
   players: any[] = [];
@@ -35,7 +32,7 @@ export class PlayersComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching teams:', error);
-      }
+      },
     );
   }
 
@@ -44,26 +41,33 @@ export class PlayersComponent implements OnInit {
       this.databaseService.getPlayers(this.selectedTeamId).subscribe(
         (data) => {
           this.players = data;
-          this.attackers = this.players.filter(player => player.position === 'Attacker');
-          this.defenders = this.players.filter(player => player.position === 'Defender');
+          this.attackers = this.players.filter(
+            (player) => player.position === 'Attacker',
+          );
+          this.defenders = this.players.filter(
+            (player) => player.position === 'Defender',
+          );
           console.log('Attackers:', this.attackers);
           console.log('Defenders:', this.defenders);
         },
         (error) => {
           console.error('Error fetching players:', error);
-        }
+        },
       );
     }
   }
-
 
   imageError(event: any) {
     event.target.src = 'assets/images/placeholder.webp';
   }
 
   categorizePlayers() {
-    this.attackers = this.players.filter(player => player.position === 'Attacker');
-    this.defenders = this.players.filter(player => player.position === 'Defender');
+    this.attackers = this.players.filter(
+      (player) => player.position === 'Attacker',
+    );
+    this.defenders = this.players.filter(
+      (player) => player.position === 'Defender',
+    );
   }
 
   protected readonly Math = Math;

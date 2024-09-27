@@ -8,10 +8,9 @@ describe('AddChampionshipComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddChampionshipComponent]
-    })
-    .compileComponents();
-    
+      imports: [AddChampionshipComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(AddChampionshipComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

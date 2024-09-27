@@ -7,11 +7,11 @@ import { NgForOf, NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CurrentGameComponent } from './modules/current-game/current-game.component';
-import {GamesComponent} from "./modules/games/games.component";
-import {PlayersComponent} from "./modules/players/players.component";
-import {SelectTableComponent} from "./modules/select-table/select-table.component";
+import { GamesComponent } from './modules/games/games.component';
+import { PlayersComponent } from './modules/players/players.component';
+import { SelectTableComponent } from './modules/select-table/select-table.component';
 import { FormsModule } from '@angular/forms';
-import {SensorsComponent} from "./modules/sensors/sensors.component"; // Import FormsModule
+import { SensorsComponent } from './modules/sensors/sensors.component'; // Import FormsModule
 
 @Component({
   selector: 'app-root',
@@ -29,7 +29,6 @@ import {SensorsComponent} from "./modules/sensors/sensors.component"; // Import 
     PlayersComponent,
     SelectTableComponent,
     SensorsComponent,
-
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
