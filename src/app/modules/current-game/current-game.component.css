@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header,
+footer {
+  flex-shrink: 0;
+}
+
+.row {
+  flex-grow: 1;
+}
+
+.col-md-6 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.horizontal-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.horizontal-values > div {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.value1,
+.value4,
+.value5,
+.value6 {
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}

@@ -1,21 +1,34 @@
-<!-- menu.component.html -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <!-- Brand/logo -->
-    <a class="navbar-brand" href="#">Interface Robot Explorateur</a>
+    <!-- First Line: Brand/logo -->
+    <div
+      class="navbar-header d-flex justify-content-between align-items-center w-100"
+    >
+      <a class="navbar-brand" href="#">Interface Coach Manager</a>
 
-    <!-- Toggler/collapsible Button -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <!-- Toggler/collapsible Button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
 
-    <!-- Navbar links -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" *ngFor="let mode of modes$ | async"
-            (click)="setModeActive(mode)" [class.active]="mode.active">
+    <!-- Second Line: Navbar links -->
+    <div class="collapse navbar-collapse mt-2" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-around">
+        <li
+          class="nav-item"
+          *ngFor="let mode of modes$ | async"
+          (click)="setModeActive(mode)"
+          [class.active]="mode.active"
+        >
           <a class="nav-link" href="javascript:void(0);">{{ mode.label }}</a>
         </li>
       </ul>

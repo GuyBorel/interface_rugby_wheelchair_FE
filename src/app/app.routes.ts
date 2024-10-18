@@ -1,4 +1,4 @@
-import {Routes} from '@angular/router';
-import {ModePilotageManuelComponent} from "./mode-pilotage-manuel/mode-pilotage-manuel.component";
+import { Routes } from '@angular/router';
+import { AppComponent } from './app.component';
 
-export const routes: Routes = [{path:'',component: ModePilotageManuelComponent}];
+export const routes: Routes = [{ path: '', component: AppComponent }];
