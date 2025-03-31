@@ -5,7 +5,7 @@
 
 Ce frontend Angular est l’interface utilisateur du projet de **coaching stratégique pour le rugby en fauteuil**. Il interagit avec le backend Flask via API REST et WebSocket pour offrir un affichage en temps réel des données capteurs et de gestion de base de données sportive.
 
-Projet présenté lors d'une **summer school 2024** en partenariat avec l’UPSSITECH (France), Ostfalia (Allemagne), Wuerzburg (Allemagne) et Munster UAS (Irlande).
+Projet présenté lors d'une **summer school** pour le Stade Toulousain handisport  avec la participation de l'UPSSITECH, l'université d'Ostfalia, l'université de Wuerzburg et l'université technologique de Munster.
 
 ---
 
