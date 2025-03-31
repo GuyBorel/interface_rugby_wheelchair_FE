@@ -1,27 +1,67 @@
-# InterfaceRobotExplorateur
+# Frontend Rugby Fauteuil – Interface de Monitoring Temps Réel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
+![Angular](https://img.shields.io/badge/built%20with-Angular-red)
+![Status](https://img.shields.io/badge/status-terminé-green)
 
-## Development server
+Ce frontend Angular est l’interface utilisateur du projet de **coaching stratégique pour le rugby en fauteuil**. Il interagit avec le backend Flask via API REST et WebSocket pour offrir un affichage en temps réel des données capteurs et de gestion de base de données sportive.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Projet présenté lors d'une **summer school 2024** en partenariat avec l’UPSSITECH (France), Ostfalia (Allemagne), Wuerzburg (Allemagne) et Munster UAS (Irlande).
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🚀 Objectif
 
-## Build
+- Offrir une interface ergonomique aux analystes/coachs pour suivre l'activité physique et stratégique des joueurs.
+- Gérer la base de données : clubs, joueurs, matchs, championnats.
+- Visualiser les données des capteurs en temps réel (chocs, température, rythme cardiaque).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## 🔍 Fonctionnalités principales
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- `Add Championship` : ajout d’un nouveau championnat (date, division, club gagnant...)
+- `Add Club / Player / Match` : interfaces de création avec liaison dynamique
+- `Current Game` : 
+  - Affichage live des capteurs des joueurs en match
+  - Informations par joueur / capteur / équipe
+- `Games` : historique des matchs joués avec scores et infos associées
+- `Players` : annuaire des joueurs par équipe, avec infos et photo
+- `Select Table` : outil d’édition manuelle de la base de données (dev)
+- `Sensors` : courbes temps-réel des capteurs individuels (BPM, température, chocs)
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## ⚖️ Stack Technique
 
-## Further help
+- **Framework** : Angular 17+
+- **Langages** : TypeScript, HTML, SCSS
+- **API / Socket** : Connexion au backend Flask via HTTP et WebSocket
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+## 🌐 Lien vers le backend associé
+
+Backend Flask : [rugby_wheelchair_backend](https://github.com/Bebel19/rugby_wheelchair_backend)
+
+---
+
+## ✅ Statut
+
+Le projet est fonctionnel et a été testé avec des capteurs ESP32-S3 connectés.
+---
+
+## 📂 Lancer le projet localement
+
+```bash
+# 1. Cloner le repo
+$ git clone https://github.com/GuyBorel/interface_rugby_wheelchair_FE.git
+$ cd interface_rugby_wheelchair_FE
+
+# 2. Installer les dépendances
+$ npm install
+
+# 3. Lancer le serveur de dev
+$ ng serve --open
+
+# L'application sera disponible sur http://localhost:4200
+```
