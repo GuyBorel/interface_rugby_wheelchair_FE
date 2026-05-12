@@ -1,4 +1,4 @@
-# Frontend Rugby Fauteuil – Interface de Monitoring Temps Réel
+# Interface for wheelchair rugby coaching
 
 ![Angular](https://img.shields.io/badge/built%20with-Angular-red)
 ![Status](https://img.shields.io/badge/status-terminé-green)
