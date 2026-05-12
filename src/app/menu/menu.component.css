@@ -1,0 +1,39 @@
+/* Add some custom styling to your navbar */
+.navbar-header {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+}
+
+.navbar-toggler {
+  margin-left: auto;
+}
+
+.navbar-nav .nav-item {
+  text-align: center;
+  flex: 1;
+}
+
+.navbar-nav .nav-item .nav-link {
+  padding: 10px 15px;
+  color: #495057;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-item .nav-link:hover {
+  background-color: #e2e6ea;
+  color: #007bff;
+  border-radius: 5px;
+}
+
+.navbar-nav .nav-item + .nav-item {
+  margin-left: 10px;
+}

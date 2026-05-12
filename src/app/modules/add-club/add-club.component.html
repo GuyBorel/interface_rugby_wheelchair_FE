@@ -1,0 +1,38 @@
+<h2>Add New Club</h2>
+<form (ngSubmit)="onSubmit()" class="form-container">
+  <div class="form-group">
+    <label for="name" class="form-label">Name:</label>
+    <input
+      type="text"
+      id="name"
+      [(ngModel)]="clubData.name"
+      name="name"
+      required
+      class="form-input"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="city" class="form-label">City:</label>
+    <input
+      type="text"
+      id="city"
+      [(ngModel)]="clubData.city"
+      name="city"
+      class="form-input"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="established_year" class="form-label">Established Year:</label>
+    <input
+      type="number"
+      id="established_year"
+      [(ngModel)]="clubData.established_year"
+      name="established_year"
+      class="form-input"
+    />
+  </div>
+
+  <button type="submit" class="submit-button">Add Club</button>
+</form>
