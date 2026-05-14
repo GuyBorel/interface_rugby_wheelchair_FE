@@ -1,67 +1,165 @@
-# Interface for wheelchair rugby coaching
+# Interface for Wheelchair Rugby Coaching
 
 ![Angular](https://img.shields.io/badge/built%20with-Angular-red)
-![Status](https://img.shields.io/badge/status-terminé-green)
+![Status](https://img.shields.io/badge/status-completed-green)
 
-Ce frontend Angular est l’interface utilisateur du projet de **coaching stratégique pour le rugby en fauteuil**. Il interagit avec le backend Flask via API REST et WebSocket pour offrir un affichage en temps réel des données capteurs et de gestion de base de données sportive.
+Angular frontend for the **Strategic Coaching for Wheelchair Rugby** project.
 
-Projet présenté lors d'une **summer school** pour le Stade Toulousain handisport  avec la participation de l'UPSSITECH, l'université d'Ostfalia, l'université de Wuerzburg et l'université technologique de Munster.
+This application provides a user interface for coaches and analysts to manage wheelchair rugby data and monitor player sensor information in real time. It communicates with a Flask backend through REST APIs and WebSocket communication.
 
----
-
-## 🚀 Objectif
-
-- Offrir une interface ergonomique aux analystes/coachs pour suivre l'activité physique et stratégique des joueurs.
-- Gérer la base de données : clubs, joueurs, matchs, championnats.
-- Visualiser les données des capteurs en temps réel (chocs, température, rythme cardiaque).
+The project was presented during a summer school in collaboration with **Stade Toulousain Handisport**, **UPSSITECH**, **Ostfalia University**, **University of Würzburg**, and **Münster University of Applied Sciences**.
 
 ---
 
-## 🔍 Fonctionnalités principales
+## Objective
 
-- `Add Championship` : ajout d’un nouveau championnat (date, division, club gagnant...)
-- `Add Club / Player / Match` : interfaces de création avec liaison dynamique
-- `Current Game` : 
-  - Affichage live des capteurs des joueurs en match
-  - Informations par joueur / capteur / équipe
-- `Games` : historique des matchs joués avec scores et infos associées
-- `Players` : annuaire des joueurs par équipe, avec infos et photo
-- `Select Table` : outil d’édition manuelle de la base de données (dev)
-- `Sensors` : courbes temps-réel des capteurs individuels (BPM, température, chocs)
+The objective of this frontend is to provide a practical coaching and analysis interface for wheelchair rugby by allowing users to:
+
+- manage sports data such as clubs, players, matches, championships, and game history;
+- display live sensor data during a match;
+- support coaches and analysts with real-time information about players and teams;
+- interact with the backend database through a structured graphical interface.
 
 ---
 
-## ⚖️ Stack Technique
+## Main Features
 
-- **Framework** : Angular 17+
-- **Langages** : TypeScript, HTML, SCSS
-- **API / Socket** : Connexion au backend Flask via HTTP et WebSocket
+### Championship Management
+
+Create and manage championship records, including:
+
+- date;
+- division;
+- participating clubs;
+- winning club.
+
+### Club, Player, and Match Management
+
+Dedicated forms are available to add and manage:
+
+- clubs;
+- players;
+- matches;
+- relationships between players, teams, and competitions.
+
+### Current Game View
+
+Real-time game interface displaying live information during a match, including:
+
+- player data;
+- team data;
+- sensor status;
+- live sensor readings.
+
+### Game History
+
+Display previously played games with associated information such as:
+
+- teams;
+- scores;
+- match details;
+- historical records.
+
+### Player Directory
+
+Browse players by team with information such as:
+
+- name;
+- club;
+- profile data;
+- player picture.
+
+### Sensor Monitoring
+
+Visualize real-time sensor data from individual players, including:
+
+- heart rate;
+- temperature;
+- impacts and shocks;
+- time-series curves.
+
+### Database Table Editor
+
+Development-oriented interface allowing manual inspection and editing of selected database tables.
 
 ---
 
-## 🌐 Lien vers le backend associé
+## Technical Stack
 
-Backend Flask : [rugby_wheelchair_backend](https://github.com/Bebel19/rugby_wheelchair_backend)
+- **Framework:** Angular 17
+- **Languages:** TypeScript, HTML, SCSS
+- **UI:** Bootstrap
+- **Charts:** Chart.js / ng2-charts
+- **Communication:** REST API and WebSocket
+- **Backend:** Flask
+- **Sensors:** ESP32-S3-based sensor system
 
 ---
 
-## ✅ Statut
+## Associated Backend
 
-Le projet est fonctionnel et a été testé avec des capteurs ESP32-S3 connectés.
+The frontend is designed to work with the associated Flask backend:
+
+[rugby_wheelchair_backend](https://github.com/Bebel19/rugby_wheelchair_backend)
+
+The backend handles API routes, database operations, and real-time communication with the frontend.
+
 ---
 
-## 📂 Lancer le projet localement
+## Local Development Setup
+
+### Requirements
+
+This project is pinned to Node.js 20 for compatibility with Angular 17.
+
+Recommended setup:
 
 ```bash
-# 1. Cloner le repo
-$ git clone https://github.com/GuyBorel/interface_rugby_wheelchair_FE.git
-$ cd interface_rugby_wheelchair_FE
-
-# 2. Installer les dépendances
-$ npm install
-
-# 3. Lancer le serveur de dev
-$ ng serve --open
-
-# L'application sera disponible sur http://localhost:4200
+nvm use
 ```
+The repository includes a .nvmrc file specifying the expected Node.js version.
+
+# Install Dependencies
+
+Use npm ci to install the project from the locked dependency tree:
+
+```bash
+npm ci
+```
+
+Do not use npm install for normal setup.
+Use npm install only when intentionally adding, removing, or updating dependencies.
+
+# Start the Development Server
+
+```bash
+npm start
+```
+
+or:
+
+```bash
+ng serve --open
+```
+
+The application will be available at:
+
+http://localhost:4200
+
+# Build the project
+
+```bash
+npm run build
+```
+
+The production build output is generated in:
+
+dist/interface_robot_explorateur
+
+
+# Project Status
+
+The project is functional and has been tested with ESP32-S3 sensors connected to the backend system.
+
+The frontend builds successfully with the locked Angular 17 dependency tree.
+
