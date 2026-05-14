@@ -54,14 +54,14 @@ Le projet est fonctionnel et a été testé avec des capteurs ESP32-S3 connecté
 
 ```bash
 # 1. Cloner le repo
-$ git clone https://github.com/GuyBorel/interface_rugby_wheelchair_FE.git
-$ cd interface_rugby_wheelchair_FE
+git clone https://github.com/GuyBorel/interface_rugby_wheelchair_FE.git
+cd interface_rugby_wheelchair_FE
 
 # 2. Installer les dépendances
-$ npm install
+npm install
 
 # 3. Lancer le serveur de dev
-$ ng serve --open
+ng serve --open
 
 # L'application sera disponible sur http://localhost:4200
 ```
